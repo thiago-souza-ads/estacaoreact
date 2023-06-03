@@ -1,12 +1,14 @@
-import { useRef, useState, useEffect } from 'react';
+import {useEffect, useRef, useState} from 'react';
 import useAuth from '../hooks/useAuth';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import {Link, useLocation, useNavigate} from 'react-router-dom';
 
 import axios from '../api/axios';
+
 const LOGIN_URL = 'login/logar';
+const BASE_URL = 'http://enadejava-1685497331322.azurewebsites.net/';
 
 const Login = () => {
-    const { setAuth } = useAuth();
+    const {setAuth} = useAuth();
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -27,37 +29,71 @@ const Login = () => {
         setErrMsg('');
     }, [login, password])
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-
-        try {
-            const response = await axios.post(LOGIN_URL,
-                JSON.stringify({ login, password }),
+        axios
+            .post((BASE_URL + LOGIN_URL), {
+                'login': login,
+                'password': password,
+            },
                 {
-                    headers: { 'Content-Type': 'application/json' },
-                    withCredentials: true
+                        headers: { 'Content-Type': 'application/json' },
+                        withCredentials: true
+                })
+            .then((response) => {
+                console.log(JSON.stringify(response?.data));
+                const accessToken = response?.data?.accessToken;
+                const roles = response?.data?.roles[0].nome;
+                setAuth({login, password, roles, accessToken});
+                setLogin('');
+                setPassword('');
+                navigate(from, {replace: true});
+            })
+            .catch((err) => {
+                if (!err?.response) {
+                    setErrMsg('Sem resposta do servidor, tente novamente');
+                } else if (err.response?.status === 400) {
+                    setErrMsg('Nome de usuario ou senha incorreta');
+                } else if (err.response?.status === 401) {
+                    setErrMsg('Não autorizado');
+                } else {
+                    setErrMsg('Falha ao logar');
                 }
-            );
-            console.log(JSON.stringify(response?.data));
-            const accessToken = response?.data?.accessToken;
-            const roles = response?.data?.roles;
-            setAuth({ login, password, roles, accessToken });
-            setLogin('');
-            setPassword('');
-            navigate(from, { replace: true });
-        } catch (err) {
-            if (!err?.response) {
-                setErrMsg('No Server Response');
-            } else if (err.response?.status === 400) {
-                setErrMsg('Missing Loginname or Password');
-            } else if (err.response?.status === 401) {
-                setErrMsg('Unauthorized');
-            } else {
-                setErrMsg('Login Failed');
-            }
-            errRef.current.focus();
-        }
-    }
+                errRef.current.focus();
+            });
+    };
+
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //
+    //     try {
+    //         const response = await axios.post(LOGIN_URL,
+    //             JSON.stringify({ login, password }),
+    //             {
+    //                 headers: { 'Content-Type': 'application/json' },
+    //                 withCredentials: true
+    //             }
+    //         );
+    //         console.log(JSON.stringify(response?.data));
+    //         const accessToken = response?.data?.accessToken;
+    //         const roles = response?.data?.roles;
+    //         setAuth({ login, password, roles, accessToken });
+    //         setLogin('');
+    //         setPassword('');
+    //         navigate(from, { replace: true });
+    //     } catch (err) {
+    //         if (!err?.response) {
+    //             setErrMsg('No Server Response');
+    //         } else if (err.response?.status === 400) {
+    //             setErrMsg('Missing Loginname or Password');
+    //         } else if (err.response?.status === 401) {
+    //             setErrMsg('Unauthorized');
+    //         } else {
+    //             setErrMsg('Login Failed');
+    //         }
+    //         errRef.current.focus();
+    //     }
+    // }
 
     return (
 
@@ -87,7 +123,7 @@ const Login = () => {
                 <button>Sign In</button>
             </form>
             <p>
-                Need an Account?<br />
+                Need an Account?<br/>
                 <span className="line">
                     <Link to="/register">Sign Up</Link>
                 </span>
