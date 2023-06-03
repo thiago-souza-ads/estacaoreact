@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     environment:
-      name: 'production'
+      name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
@@ -51,6 +51,6 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'estacaoenade'
-          slot-name: 'production'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_839d4de92ba54f02864e71882f4ed6a4 }}
+          slot-name: 'Production'
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CC117401A22C46DABF185509334C823B }}
           package: .
