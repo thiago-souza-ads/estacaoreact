@@ -6,7 +6,11 @@ import axios from '../api/axios';
 
 const LOGIN_URL = 'login/logar';
 const BASE_URL = 'http://enadejava-1685497331322.azurewebsites.net/';
-
+const ROLES = {
+    'User': 2001,
+    'Editor': 1984,
+    'Admin': 5150
+}
 const Login = () => {
     const {setAuth} = useAuth();
 
@@ -33,18 +37,32 @@ const Login = () => {
         e.preventDefault();
         axios
             .post((BASE_URL + LOGIN_URL), {
-                'login': login,
-                'password': password,
-            },
+                    'login': login,
+                    'password': password,
+                },
                 {
-                        headers: { 'Content-Type': 'application/json' },
-                        withCredentials: true
+                    headers: {'Content-Type': 'application/json'},
+                    'Content-Length': JSON.stringify({'login': login, 'password': password}).length
                 })
             .then((response) => {
                 console.log(JSON.stringify(response?.data));
-                const accessToken = response?.data?.accessToken;
                 const roles = response?.data?.roles[0].nome;
-                setAuth({login, password, roles, accessToken});
+                const token = response?.data?.token;
+                let roleId;
+                if (roles === 'Aluno') {
+                   roleId =  ROLES.User;
+                }
+                else if (roles === 'Coordenador') {
+                    roleId = ROLES.Admin;
+                }
+                else if (roles === 'Administrador') {
+                    roleId = ROLES.Admin;
+                }
+                else if (roles === 'Professor') {
+                    roleId = ROLES.Editor;
+                }
+
+                setAuth({login, password, roleId, token});
                 setLogin('');
                 setPassword('');
                 navigate(from, {replace: true});
@@ -62,39 +80,6 @@ const Login = () => {
                 errRef.current.focus();
             });
     };
-
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //
-    //     try {
-    //         const response = await axios.post(LOGIN_URL,
-    //             JSON.stringify({ login, password }),
-    //             {
-    //                 headers: { 'Content-Type': 'application/json' },
-    //                 withCredentials: true
-    //             }
-    //         );
-    //         console.log(JSON.stringify(response?.data));
-    //         const accessToken = response?.data?.accessToken;
-    //         const roles = response?.data?.roles;
-    //         setAuth({ login, password, roles, accessToken });
-    //         setLogin('');
-    //         setPassword('');
-    //         navigate(from, { replace: true });
-    //     } catch (err) {
-    //         if (!err?.response) {
-    //             setErrMsg('No Server Response');
-    //         } else if (err.response?.status === 400) {
-    //             setErrMsg('Missing Loginname or Password');
-    //         } else if (err.response?.status === 401) {
-    //             setErrMsg('Unauthorized');
-    //         } else {
-    //             setErrMsg('Login Failed');
-    //         }
-    //         errRef.current.focus();
-    //     }
-    // }
-
     return (
 
         <section>
