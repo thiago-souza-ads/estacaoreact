@@ -4,8 +4,7 @@ import {Link, useLocation, useNavigate} from 'react-router-dom';
 
 import axios from '../api/axios';
 
-const LOGIN_URL = 'login/logar';
-const BASE_URL = 'http://enadejava-1685497331322.azurewebsites.net/';
+const LOGIN_URL = 'auth/authenticate';
 const ROLES = {
     'User': 2001,
     'Editor': 1984,
@@ -13,7 +12,6 @@ const ROLES = {
 }
 const Login = () => {
     const {setAuth} = useAuth();
-
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
@@ -36,12 +34,15 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
-            .post((BASE_URL + LOGIN_URL), {
+            .post(LOGIN_URL, {
                     'login': login,
                     'password': password,
                 },
                 {
-                    headers: {'Content-Type': 'application/json'},
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': '*'
+                    },
                     'Content-Length': JSON.stringify({'login': login, 'password': password}).length
                 })
             .then((response) => {
