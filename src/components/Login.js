@@ -40,8 +40,7 @@ const Login = () => {
                 },
                 {
                     headers: {
-                        'Content-Type': 'application/json',
-                        'Access-Control-Allow-Origin': '*'
+                        'Content-Type': 'application/json'
                     },
                     'Content-Length': JSON.stringify({'login': login, 'password': password}).length
                 })
