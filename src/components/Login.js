@@ -46,23 +46,23 @@ const Login = () => {
                 })
             .then((response) => {
                 console.log(JSON.stringify(response?.data));
-                const roles = response?.data?.roles[0].nome;
-                const token = response?.data?.token;
-                let roleId;
-                if (roles === 'Aluno') {
-                   roleId =  ROLES.User;
-                }
-                else if (roles === 'Coordenador') {
-                    roleId = ROLES.Admin;
-                }
-                else if (roles === 'Administrador') {
-                    roleId = ROLES.Admin;
-                }
-                else if (roles === 'Professor') {
-                    roleId = ROLES.Editor;
-                }
 
-                setAuth({login, password, roleId, token});
+                const user = response?.data?.user;
+                const rolesName = user?.roles[0].nome;
+                let token = response?.data?.access_token;
+                let roleId;
+
+                if (rolesName === 'Aluno') {
+                    roleId = ROLES.User;
+                } else if (rolesName === 'Coordenador' || rolesName === 'Administrador') {
+                    roleId = ROLES.Admin;
+                } else if (rolesName === 'Professor') {
+                    roleId = ROLES.Editor;
+                } else {
+                    roleId = ROLES.User;
+                }
+                const accessToken = token;
+                setAuth({ user:login, password, roles:roleId, accessToken });
                 setLogin('');
                 setPassword('');
                 navigate(from, {replace: true});
