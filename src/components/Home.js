@@ -3,12 +3,12 @@ import { useContext } from "react";
 import AuthContext from "../context/AuthProvider";
 
 const Home = () => {
-    const { setAuth } = useContext(AuthContext);
+    const { setAuth, auth } = useContext(AuthContext);
+    const { usuario } = auth;
+    const userData = usuario;
     const navigate = useNavigate();
 
     const logout = async () => {
-        // if used in more components, this should be in context 
-        // axios to /logout endpoint 
         setAuth({});
         navigate('/linkpage');
     }
@@ -17,7 +17,7 @@ const Home = () => {
         <section>
             <h1>Home</h1>
             <br />
-            <p>You are logged in!</p>
+            <p>You are logged in! {userData?.nome}</p>
             <br />
             <Link to="/editor">Go to the Editor page</Link>
             <br />
@@ -30,7 +30,7 @@ const Home = () => {
                 <button onClick={logout}>Sign Out</button>
             </div>
         </section>
-    )
+    );
 }
 
-export default Home
+export default Home;
