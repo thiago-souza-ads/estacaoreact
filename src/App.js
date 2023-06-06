@@ -1,5 +1,5 @@
 import Register from './components/Register';
-import Login from './components/Login';
+import Login from './components/login/Login';
 import Home from './components/Home';
 import Layout from './components/Layout';
 import Editor from './components/Editor';
@@ -30,19 +30,19 @@ function App() {
         <Route path="unauthorized" element={<Unauthorized />} />
 
         {/* we want to protect these routes */}
-        <Route element={<RequireAuth allowedRoles={[ROLES.Aluno]} />}>
+        <Route element={<RequireAuth allowedRoles={[ROLES.Aluno, ROLES.Administrador, ROLES.Coordenador, ROLES.Professor]} />}>
           <Route path="/" element={<Home />} />
         </Route>
 
-        <Route element={<RequireAuth allowedRoles={[ROLES.Admin, ROLES.Coordenador, ROLES.Professor]} />}>
+        <Route element={<RequireAuth allowedRoles={[ROLES.Administrador, ROLES.Coordenador, ROLES.Professor]} />}>
           <Route path="editor" element={<Editor />} />
         </Route>
 
-        <Route element={<RequireAuth allowedRoles={[ROLES.Admin, ROLES.Coordenador]} />}>
+        <Route element={<RequireAuth allowedRoles={[ROLES.Administrador, ROLES.Coordenador]} />}>
           <Route path="admin" element={<Admin />} />
         </Route>
 
-        <Route element={<RequireAuth allowedRoles={[ROLES.Admin, ROLES.Coordenador, ROLES.Professor]} />}>
+        <Route element={<RequireAuth allowedRoles={[ROLES.Administrador, ROLES.Coordenador, ROLES.Professor]} />}>
           <Route path="lounge" element={<Lounge />} />
         </Route>
 
