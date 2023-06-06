@@ -12,9 +12,10 @@ import RequireAuth from './components/RequireAuth';
 import { Routes, Route } from 'react-router-dom';
 
 const ROLES = {
-  'User': 2001,
-  'Editor': 1984,
-  'Admin': 5150
+  'Professor': 1001,
+  'Coordenador': 1002,
+  'Administrador': 1003,
+  'Aluno': 1000
 }
 
 function App() {
@@ -29,20 +30,19 @@ function App() {
         <Route path="unauthorized" element={<Unauthorized />} />
 
         {/* we want to protect these routes */}
-        <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
+        <Route element={<RequireAuth allowedRoles={[ROLES.Aluno]} />}>
           <Route path="/" element={<Home />} />
         </Route>
 
-        <Route element={<RequireAuth allowedRoles={[ROLES.Editor]} />}>
+        <Route element={<RequireAuth allowedRoles={[ROLES.Admin, ROLES.Coordenador, ROLES.Professor]} />}>
           <Route path="editor" element={<Editor />} />
         </Route>
 
-
-        <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+        <Route element={<RequireAuth allowedRoles={[ROLES.Admin, ROLES.Coordenador]} />}>
           <Route path="admin" element={<Admin />} />
         </Route>
 
-        <Route element={<RequireAuth allowedRoles={[ROLES.Editor, ROLES.Admin]} />}>
+        <Route element={<RequireAuth allowedRoles={[ROLES.Admin, ROLES.Coordenador, ROLES.Professor]} />}>
           <Route path="lounge" element={<Lounge />} />
         </Route>
 

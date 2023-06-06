@@ -5,11 +5,14 @@ import {Link, useLocation, useNavigate} from 'react-router-dom';
 import axios from '../api/axios';
 
 const LOGIN_URL = 'auth/authenticate';
+
 const ROLES = {
-    'User': 2001,
-    'Editor': 1984,
-    'Admin': 5150
+    'Professor': 1001,
+    'Coordenador': 1002,
+    'Administrador': 1003,
+    'Aluno': 1000
 }
+
 const Login = () => {
     const {setAuth} = useAuth();
     const navigate = useNavigate();
@@ -50,17 +53,7 @@ const Login = () => {
                 const user = response?.data?.user;
                 const rolesName = user?.roles[0].nome;
                 let token = response?.data?.access_token;
-                let roleId;
-
-                if (rolesName === 'Aluno') {
-                    roleId = ROLES.User;
-                } else if (rolesName === 'Coordenador' || rolesName === 'Administrador') {
-                    roleId = ROLES.Admin;
-                } else if (rolesName === 'Professor') {
-                    roleId = ROLES.Editor;
-                } else {
-                    roleId = ROLES.User;
-                }
+                let roleId = ROLES[rolesName];
                 const accessToken = token;
                 setAuth({ user:login, password, roles:roleId, accessToken });
                 setLogin('');
