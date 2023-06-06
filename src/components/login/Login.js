@@ -1,8 +1,9 @@
-import {useEffect, useRef, useState} from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
-import {Link, useLocation, useNavigate} from 'react-router-dom';
-
+import { useLocation, useNavigate } from 'react-router-dom';
+import Logo from '../../assets/estacioWhiteBg.png';
 import axios from '../../api/axios';
+import styles from './Login.module.css';
 
 const LOGIN_URL = 'auth/authenticate';
 
@@ -14,7 +15,7 @@ const ROLES = {
 }
 
 const Login = () => {
-    const {setAuth} = useAuth();
+    const { setAuth } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
@@ -28,16 +29,18 @@ const Login = () => {
 
     useEffect(() => {
         userRef.current.focus();
-    }, [])
+    }, []);
 
     useEffect(() => {
         setErrMsg('');
-    }, [login, password])
+    }, [login, password]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
-            .post(LOGIN_URL, {
+            .post(
+                LOGIN_URL,
+                {
                     'login': login,
                     'password': password,
                 },
@@ -45,8 +48,9 @@ const Login = () => {
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    'Content-Length': JSON.stringify({'login': login, 'password': password}).length
-                })
+                    'Content-Length': JSON.stringify({ 'login': login, 'password': password }).length
+                }
+            )
             .then((response) => {
                 console.log(JSON.stringify(response?.data));
 
@@ -55,16 +59,16 @@ const Login = () => {
                 let token = response?.data?.access_token;
                 let roleId = ROLES[rolesName];
                 const accessToken = token;
-                setAuth({ user:login, password, roles:roleId, accessToken });
+                setAuth({ user: login, password, roles: roleId, accessToken });
                 setLogin('');
                 setPassword('');
-                navigate(from, {replace: true});
+                navigate(from, { replace: true });
             })
             .catch((err) => {
                 if (!err?.response) {
                     setErrMsg('Sem resposta do servidor, tente novamente');
                 } else if (err.response?.status === 400) {
-                    setErrMsg('Nome de usuario ou senha incorreta');
+                    setErrMsg('Nome de usuário ou senha incorreta');
                 } else if (err.response?.status === 401) {
                     setErrMsg('Não autorizado');
                 } else {
@@ -73,42 +77,40 @@ const Login = () => {
                 errRef.current.focus();
             });
     };
+
     return (
-
-        <section>
-            <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-            <h1>Sign In</h1>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="loginName">Login:</label>
-                <input
-                    type="text"
-                    id="loginName"
-                    ref={userRef}
-                    autoComplete="off"
-                    onChange={(e) => setLogin(e.target.value)}
-                    value={login}
-                    required
-                />
-
-                <label htmlFor="password">Password:</label>
-                <input
-                    type="password"
-                    id="password"
-                    onChange={(e) => setPassword(e.target.value)}
-                    value={password}
-                    required
-                />
-                <button>Sign In</button>
-            </form>
-            <p>
-                Need an Account?<br/>
-                <span className="line">
-                    <Link to="/register">Sign Up</Link>
-                </span>
-            </p>
-        </section>
-
-    )
+        <div className={styles.main}>
+            <div className={styles.loginContainer}>
+                <div className={styles.loginInput}>
+                    <form onSubmit={handleSubmit}>
+                        <img src={Logo} alt="logo" width="150px" />
+                        <div className={styles.inputsBox}>
+                            <input
+                                type="text"
+                                id="loginName"
+                                ref={userRef}
+                                autoComplete="off"
+                                onChange={(e) => setLogin(e.target.value)}
+                                value={login}
+                                placeholder="E-mail"
+                                required
+                            />
+                            <input
+                                type="password"
+                                id="password"
+                                onChange={(e) => setPassword(e.target.value)}
+                                value={password}
+                                placeholder="Senha"
+                                required
+                            />
+                        </div>
+                        <button>Logar</button>
+                        <div className={styles.error}>{errMsg}</div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    );
 }
 
-export default Login
+export default Login;
