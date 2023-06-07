@@ -25,7 +25,7 @@ const SideBar = ({ user }) => {
         <div className={`${styles['user-sidebar']} ${sidebarOpen ? styles.open : styles.closed}`}>
             <div className={`${styles['avatar-container']} ${sidebarOpen ? '' : styles.closed}`}>
                 <Avatar
-                    className="avataaar"
+                    className={`avataaar ${sidebarOpen ? '' : styles.closed}`}
                     avatarStyle="Circle"
                     topType={avatarUser.topType}
                     accessoriesType={avatarUser.accessoriesType}
@@ -39,9 +39,9 @@ const SideBar = ({ user }) => {
                     skinColor={avatarUser.skinColor}
                 />
             </div>
-            <h2 className={sidebarOpen ? styles.closed : ''}>{user.nome}</h2>
-            <h3 className={sidebarOpen ? styles.closed : ''}>{user.roles[0].nome}</h3>
-            <Link to="/linkpage" className={sidebarOpen ? styles.closed : ''}>
+            <h2 className={`${sidebarOpen ? styles.closed : styles.hidden}`}>{user.nome}</h2>
+            <h3 className={`${sidebarOpen ? styles.closed : styles.hidden}`}>{user.roles[0].nome}</h3>
+            <Link to="/linkpage" className={`${sidebarOpen ? styles.closed : styles.hidden}`}>
                 Editar Perfil
             </Link>
             <div className={`flexGrow ${sidebarOpen ? '' : styles.closed}`}>

@@ -1,6 +1,6 @@
 .user-sidebar {
-    background-color: #B4BDC6;
-    width: 250px;
+    background-color: #b4bdc6;
+    width: 50px;
     height: 100vh;
     position: fixed;
     top: 0;
@@ -13,9 +13,11 @@
 }
 
 .user-sidebar.open {
-    width: 50px;
+    width: 250px;
 }
-
+.user-sidebar .hidden {
+    display: none;
+}
 .user-sidebar.closed {
     background-color: #c3c3c3;
 }
@@ -26,11 +28,6 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
-    display: none;
-}
-
-.user-sidebar.open .avatar-container {
-    display: flex;
 }
 
 .user-sidebar .avatar-container .avataaar {
@@ -38,18 +35,13 @@
     height: 100px;
 }
 
-.user-sidebar h2 {
-    font-size: 1.2rem;
-    margin-bottom: 5px;
+.user-sidebar h2,
+.user-sidebar h3,
+.user-sidebar a {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     width: 100%;
-}
-
-.user-sidebar h3 {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
 }
 
 .user-sidebar a,
