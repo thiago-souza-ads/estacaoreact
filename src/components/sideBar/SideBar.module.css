@@ -1,5 +1,7 @@
 .user-sidebar {
-    background-color: #b4bdc6;
+    background-image: url('../../assets/bgestacio.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
     width: 50px;
     height: 100vh;
     position: fixed;
