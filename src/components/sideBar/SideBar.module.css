@@ -22,13 +22,6 @@
     background-color: #c3c3c3;
 }
 
-.user-sidebar .avatar-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-}
 
 .user-sidebar .avatar-container .avataaar {
     width: 100px;

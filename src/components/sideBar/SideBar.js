@@ -23,37 +23,42 @@ const SideBar = ({ user }) => {
 
     return (
         <div className={`${styles['user-sidebar']} ${sidebarOpen ? styles.open : styles.closed}`}>
-            <div className={`${styles['avatar-container']} ${sidebarOpen ? '' : styles.closed}`}>
-                <Avatar
-                    className={`avataaar ${sidebarOpen ? '' : styles.closed}`}
-                    avatarStyle="Circle"
-                    topType={avatarUser.topType}
-                    accessoriesType={avatarUser.accessoriesType}
-                    hairColor={avatarUser.hairColor}
-                    facialHairType={avatarUser.facialHairType}
-                    clotheType={avatarUser.clotheType}
-                    clotheColor={avatarUser.clotheColor}
-                    eyeType={avatarUser.eyeType}
-                    eyebrowType={avatarUser.eyebrowType}
-                    mouthType={avatarUser.mouthType}
-                    skinColor={avatarUser.skinColor}
-                />
-            </div>
-            <h2 className={`${sidebarOpen ? styles.closed : styles.hidden}`}>{user.nome}</h2>
-            <h3 className={`${sidebarOpen ? styles.closed : styles.hidden}`}>{user.roles[0].nome}</h3>
-            <Link to="/linkpage" className={`${sidebarOpen ? styles.closed : styles.hidden}`}>
+            {sidebarOpen && (
+                <div className={styles['avatar-container']}>
+                    <Avatar
+                        className="avataaar"
+                        avatarStyle="Circle"
+                        topType={avatarUser.topType}
+                        accessoriesType={avatarUser.accessoriesType}
+                        hairColor={avatarUser.hairColor}
+                        facialHairType={avatarUser.facialHairType}
+                        clotheType={avatarUser.clotheType}
+                        clotheColor={avatarUser.clotheColor}
+                        eyeType={avatarUser.eyeType}
+                        eyebrowType={avatarUser.eyebrowType}
+                        mouthType={avatarUser.mouthType}
+                        skinColor={avatarUser.skinColor}
+                    />
+                </div>
+            )}
+            <h2 className={sidebarOpen ? styles.closed : styles.hidden}>{user.nome}</h2>
+            <h3 className={sidebarOpen ? styles.closed : styles.hidden}>{user.roles[0].nome}</h3>
+            <Link to="/linkpage" className={sidebarOpen ? styles.closed : styles.hidden}>
                 Editar Perfil
             </Link>
-            <div className={`flexGrow ${sidebarOpen ? '' : styles.closed}`}>
-                <button className={styles['logout-button']} onClick={logout}>
-                    <FontAwesomeIcon icon={faPowerOff} size="sm" /> Sair
-                </button>
-            </div>
+            {sidebarOpen && (
+                <div className={`flexGrow ${styles.closed}`}>
+                    <button className={styles['logout-button']} onClick={logout}>
+                        <FontAwesomeIcon icon={faPowerOff} size="sm" /> Sair
+                    </button>
+                </div>
+            )}
             <div className={styles['toggle-button']} onClick={toggleSidebar}>
                 <FontAwesomeIcon icon={faBars} size="lg" />
             </div>
         </div>
     );
+
 };
 
 export default SideBar;
