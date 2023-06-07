@@ -4,11 +4,13 @@ import styles from './SideBar.module.css';
 import AuthContext from '../../context/AuthProvider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPowerOff, faBars } from '@fortawesome/free-solid-svg-icons';
+import Avatar from 'avataaars';
 
 const SideBar = ({ user }) => {
     const { setAuth, auth } = useContext(AuthContext);
     const navigate = useNavigate();
     const [sidebarOpen, setSidebarOpen] = useState(false);
+    const avatarUser = user.avatar;
 
     const logout = async () => {
         setAuth({});
@@ -21,8 +23,21 @@ const SideBar = ({ user }) => {
 
     return (
         <div className={`${styles['user-sidebar']} ${sidebarOpen ? styles.open : styles.closed}`}>
-            <div className={styles['profile-circle']}>
-                <img src="/path/to/user/profile/image" alt="User Profile" />
+            <div className={`${styles['avatar-container']} ${sidebarOpen ? '' : styles.closed}`}>
+                <Avatar
+                    className="avataaar"
+                    avatarStyle="Circle"
+                    topType={avatarUser.topType}
+                    accessoriesType={avatarUser.accessoriesType}
+                    hairColor={avatarUser.hairColor}
+                    facialHairType={avatarUser.facialHairType}
+                    clotheType={avatarUser.clotheType}
+                    clotheColor={avatarUser.clotheColor}
+                    eyeType={avatarUser.eyeType}
+                    eyebrowType={avatarUser.eyebrowType}
+                    mouthType={avatarUser.mouthType}
+                    skinColor={avatarUser.skinColor}
+                />
             </div>
             <h2 className={sidebarOpen ? styles.closed : ''}>{user.nome}</h2>
             <h3 className={sidebarOpen ? styles.closed : ''}>{user.roles[0].nome}</h3>
