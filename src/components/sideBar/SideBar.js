@@ -2,7 +2,8 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './SideBar.module.css';
 import AuthContext from '../../context/AuthProvider';
-import { FiPower } from 'react-icons/fi';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
 
 const SideBar = ({ user }) => {
     const { setAuth, auth } = useContext(AuthContext);
@@ -28,7 +29,7 @@ const SideBar = ({ user }) => {
             <Link to="/linkpage">Editar Perfil</Link>
             <div className="flexGrow">
                 <button className={styles['logout-button']} onClick={logout}>
-                    <FiPower size={16} /> Sair
+                    <FontAwesomeIcon icon={faPowerOff} size="sm" /> Sair
                 </button>
             </div>
             <div className={styles['toggle-button']} onClick={toggleSidebar}>
