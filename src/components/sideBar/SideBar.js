@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import styles from './SideBar.module.css';
 import AuthContext from '../../context/AuthProvider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
+import { faPowerOff, faBars } from '@fortawesome/free-solid-svg-icons';
 
 const SideBar = ({ user }) => {
     const { setAuth, auth } = useContext(AuthContext);
@@ -20,20 +20,22 @@ const SideBar = ({ user }) => {
     };
 
     return (
-        <div className={`${styles['user-sidebar']} ${sidebarOpen ? styles.open : ''}`}>
+        <div className={`${styles['user-sidebar']} ${sidebarOpen ? styles.open : styles.closed}`}>
             <div className={styles['profile-circle']}>
                 <img src="/path/to/user/profile/image" alt="User Profile" />
             </div>
-            <h2>{user.nome}</h2>
-            <h3>{user.roles[0].nome}</h3>
-            <Link to="/linkpage">Editar Perfil</Link>
-            <div className="flexGrow">
+            <h2 className={sidebarOpen ? styles.closed : ''}>{user.nome}</h2>
+            <h3 className={sidebarOpen ? styles.closed : ''}>{user.roles[0].nome}</h3>
+            <Link to="/linkpage" className={sidebarOpen ? styles.closed : ''}>
+                Editar Perfil
+            </Link>
+            <div className={`flexGrow ${sidebarOpen ? '' : styles.closed}`}>
                 <button className={styles['logout-button']} onClick={logout}>
                     <FontAwesomeIcon icon={faPowerOff} size="sm" /> Sair
                 </button>
             </div>
             <div className={styles['toggle-button']} onClick={toggleSidebar}>
-                <span>{sidebarOpen ? '<' : '>'}</span>
+                <FontAwesomeIcon icon={faBars} size="lg" />
             </div>
         </div>
     );

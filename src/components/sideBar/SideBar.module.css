@@ -20,10 +20,10 @@
     background-color: #c3c3c3;
 }
 
-.user-sidebar.closed h2,
-.user-sidebar.closed h3,
-.user-sidebar.closed a,
-.user-sidebar.closed .logout-button {
+.user-sidebar.open h2,
+.user-sidebar.open h3,
+.user-sidebar.open a,
+.user-sidebar.open .logout-button {
     display: none;
 }
 
