@@ -71,11 +71,11 @@ const Register = () => {
             setMatchPwd('');
         } catch (err) {
             if (!err?.response) {
-                setErrMsg('No Server Response');
+                setErrMsg('Sem resposta do servidor! Tente mais tarde!');
             } else if (err.response?.status === 409) {
-                setErrMsg('Username Taken');
+                setErrMsg('Nome de usuario em uso, insira outro!');
             } else {
-                setErrMsg('Registration Failed')
+                setErrMsg('Erro ao cadastrar usuario')
             }
             errRef.current.focus();
         }
@@ -85,15 +85,15 @@ const Register = () => {
         <>
             {success ? (
                 <section>
-                    <h1>Success!</h1>
+                    <h1>Sucesso!</h1>
                     <p>
-                        <Link to="/">Sign In</Link>
+                        <Link to="/">Login</Link>
                     </p>
                 </section>
             ) : (
                 <section>
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-                    <h1>Register</h1>
+                    <h1>Registrar-se</h1>
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="username">
                             Username:
@@ -146,7 +146,7 @@ const Register = () => {
 
 
                         <label htmlFor="confirm_pwd">
-                            Confirm Password:
+                            Confirme o  Password:
                             <FontAwesomeIcon icon={faCheck} className={validMatch && matchPwd ? "valid" : "hide"} />
                             <FontAwesomeIcon icon={faTimes} className={validMatch || !matchPwd ? "hide" : "invalid"} />
                         </label>
@@ -169,9 +169,9 @@ const Register = () => {
                         <button disabled={!validName || !validPwd || !validMatch ? true : false}>Sign Up</button>
                     </form>
                     <p>
-                        Already registered?<br />
+                        Já tem cadastro?<br />
                         <span className="line">
-                            <Link to="/">Sign In</Link>
+                            <Link to="/">Login</Link>
                         </span>
                     </p>
                 </section>
