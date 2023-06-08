@@ -12,10 +12,8 @@ const RequireAuth = ({ allowedRoles }) => {
         <>
             {allowedRoles.includes(auth?.roles) ? (
                 <>
-                    <div>
                         <SideBar user={userData} />
                         <Outlet />
-                    </div>
                 </>
             ) : auth?.user ? (
                 <Navigate to="/unauthorized" state={{ from: location }} replace />

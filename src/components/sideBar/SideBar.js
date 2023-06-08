@@ -7,7 +7,7 @@ import { faPowerOff, faBars } from '@fortawesome/free-solid-svg-icons';
 import Avatar from 'avataaars';
 
 const SideBar = ({ user }) => {
-    const { setAuth, auth } = useContext(AuthContext);
+    const { setAuth } = useContext(AuthContext);
     const navigate = useNavigate();
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const avatarUser = user.avatar;

@@ -1,6 +1,6 @@
 import Register from './components/Register';
 import Login from './components/login/Login';
-import Home from './components/Home';
+import Home from './components/home/Home';
 import Layout from './components/Layout';
 import Editor from './components/Editor';
 import Admin from './components/Admin';
