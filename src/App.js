@@ -10,6 +10,7 @@ import Lounge from './components/Lounge';
 import LinkPage from './components/LinkPage';
 import RequireAuth from './components/RequireAuth';
 import { Routes, Route } from 'react-router-dom';
+import Usuarios from "./components/usuarios/Usuarios";
 
 const ROLES = {
   'Professor': 1001,
@@ -44,6 +45,10 @@ function App() {
 
         <Route element={<RequireAuth allowedRoles={[ROLES.Administrador, ROLES.Coordenador, ROLES.Professor]} />}>
           <Route path="lounge" element={<Lounge />} />
+        </Route>
+
+        <Route element={<RequireAuth allowedRoles={[ROLES.Aluno, ROLES.Administrador, ROLES.Coordenador, ROLES.Professor]} />}>
+          <Route path="/usuarios" element={<Usuarios />} />
         </Route>
 
         {/* catch all */}
