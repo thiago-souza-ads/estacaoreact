@@ -7,8 +7,8 @@ import "./Usuarios.module.css";
 
 const Usuarios = () => {
     const [users, setUsers] = useState([]);
-    // const API_URL = "http://enadejava-1685497331322.azurewebsites.net";
-    const API_URL = "http://localhost:8080";
+    const API_URL = "https://enadejava-1685497331322.azurewebsites.net";
+    // const API_URL = "http://localhost:8080";
     const USERS_URL = "/api/v1/usuarios";
     const {auth} = useAuth();
     const {accessToken} = auth;
