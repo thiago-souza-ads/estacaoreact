@@ -117,76 +117,81 @@ const Usuarios = () => {
     }
 
     return (
-
-            <div className="container mt-5 justify-content-center text-center">
-                <h1 className="text-center">Lista de Usuários</h1>
-                {loading ? (
-                    <div>Carregando...</div>
-                ) : (
-                    <table className="table table-striped table-bordered table-width">
-                        <thead className="table-header">
-                        <tr>
-                            <th className="column-id">ID</th>
-                            <th className="column-nome">Nome</th>
-                            <th className="column-role">Perfil</th>
-                            <th className="column-situacao">Situação</th>
-                            <th className="column-editar">Editar</th>
-                            <th className="column-excluir">Excluir</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {users.length > 0 ? (
-                            users.map((user) => (
-                                <tr key={user.id}>
-                                    <td className="column-id text-right">{user.id}</td>
-                                    <td className="column-nome text-left">{user.nome}</td>
-                                    <td className="column-role">
-                                        <select className="form-select" value={user.roles[0]?.nome}
-                                                onChange={(e) => roleChange(user, e.target.value)}>
-                                            <option value="">Selecionar</option>
-                                            <option value="Administrador">Administrador</option>
-                                            <option value="Coordenador">Coordenador</option>
-                                            <option value="Professor">Professor</option>
-                                            <option value="Aluno">Aluno</option>
-                                        </select>
-                                    </td>
-                                    <td className="column-situacao text-center">
-                                        {user.ativo ? "Ativo" : <span className="text-danger">Inativo</span>}
-                                    </td>
-                                    <td className="column-editar">
-                                        <FontAwesomeIcon
-                                            icon={faEdit}
-                                            onClick={() => editarUsuario(user.id)}
-                                        />
-                                    </td>
-                                    <td className="column-excluir">
-                                        <FontAwesomeIcon
-                                            icon={user.ativo ? faTrash : faUndo}
-                                            onClick={() => excluirUsuario(user.id)}
-                                            className={user.ativo ? "" : "text-danger"}
-                                        />
-                                    </td>
-                                </tr>
-                            ))
-                        ) : (
-                            <tr>
-                                <td colSpan="6">Nenhum usuário encontrado.</td>
+        <div className="container mt-5 justify-content-center text-center">
+            <h1 className="text-center">Lista de Usuários</h1>
+            {loading ? (
+                <div>Carregando...</div>
+            ) : (
+                <table className="table table-striped table-bordered table-width">
+                    <thead className="table-header">
+                    <tr>
+                        <th className="column-id">ID</th>
+                        <th className="column-nome">Nome</th>
+                        <th className="column-login">Login</th>
+                        <th className="column-role">Perfil</th>
+                        <th className="column-situacao">Situação</th>
+                        <th className="column-editar">Editar</th>
+                        <th className="column-excluir">Excluir</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {users.length > 0 ? (
+                        users.map((user) => (
+                            <tr key={user.id}>
+                                <td className="column-id text-right">{user.id}</td>
+                                <td className="column-nome text-left">{user.nome}</td>
+                                <td className="column-login text-left">{user.login}</td>
+                                <td className="column-role">
+                                    <select
+                                        className="form-select"
+                                        value={user.roles[0]?.nome}
+                                        onChange={(e) => roleChange(user, e.target.value)}
+                                    >
+                                        <option value="">Selecionar</option>
+                                        <option value="Administrador">Administrador</option>
+                                        <option value="Coordenador">Coordenador</option>
+                                        <option value="Professor">Professor</option>
+                                        <option value="Aluno">Aluno</option>
+                                    </select>
+                                </td>
+                                <td className="column-situacao text-center">
+                                    {user.ativo ? "Ativo" : <span className="text-danger">Inativo</span>}
+                                </td>
+                                <td className="column-editar">
+                                    <FontAwesomeIcon
+                                        icon={faEdit}
+                                        onClick={() => editarUsuario(user.id)}
+                                    />
+                                </td>
+                                <td className="column-excluir">
+                                    <FontAwesomeIcon
+                                        icon={user.ativo ? faTrash : faUndo}
+                                        onClick={() => excluirUsuario(user.id)}
+                                        className={user.ativo ? "" : "text-danger"}
+                                    />
+                                </td>
                             </tr>
-                        )}
-                        </tbody>
-                        <tfoot className="table-footer">
+                        ))
+                    ) : (
                         <tr>
-                            <td colSpan="6">Total de Usuários: {users.length}</td>
+                            <td colSpan="7">Nenhum usuário encontrado.</td>
                         </tr>
-                        </tfoot>
-                    </table>
-                )}
+                    )}
+                    </tbody>
+                    <tfoot className="table-footer">
+                    <tr>
+                        <td colSpan="7">Total de Usuários: {users.length}</td>
+                    </tr>
+                    </tfoot>
+                </table>
+            )}
 
-                <button className="btn btn-primary" onClick={criarUsuario}>
-                    Adicionar Usuário
-                </button>
-            </div>
+            <button className="btn btn-primary" onClick={criarUsuario}>
+                Adicionar Usuário
+            </button>
+        </div>
     );
+
 
 };
 
