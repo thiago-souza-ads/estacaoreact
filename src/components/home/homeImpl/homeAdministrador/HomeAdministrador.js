@@ -10,8 +10,8 @@ export const HomeAdministrador = () => {
                     <Nav.Link as={Link} to="/usuarios">
                         Usuários
                     </Nav.Link>
-                    <Nav.Link as={Link} to="/coordenadores">
-                        Coordenadores
+                    <Nav.Link as={Link} to="/mapas">
+                        Mapas
                     </Nav.Link>
                     <Nav.Link as={Link} to="/professores">
                         Professores

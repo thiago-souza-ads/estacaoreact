@@ -1,0 +1,79 @@
+.mapaContainer {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.formContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.formContainer input {
+    padding: 8px;
+    margin-right: 10px;
+}
+
+.addButton {
+    padding: 8px 16px;
+    background-color: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.mapasTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.mapasTable th,
+.mapasTable td {
+    border: 1px solid #dee2e6;
+    padding: 8px;
+}
+
+.mapasTable th {
+    background-color: #f9f9f9;
+}
+
+.mapasTable td:nth-child(1) {
+    text-align: center;
+}
+
+.mapasTable td:nth-child(6),
+.mapasTable td:nth-child(7) {
+    text-align: center;
+}
+
+.editButton,
+.deleteButton,
+.saveButton,
+.cancelButton {
+    padding: 4px;
+    margin-right: 4px;
+    border: none;
+    cursor: pointer;
+}
+
+.editButton {
+    background-color: #007bff;
+    color: white;
+}
+
+.deleteButton {
+    background-color: red;
+    color: white;
+}
+
+.saveButton {
+    background-color: green;
+    color: white;
+}
+
+.cancelButton {
+    background-color: gray;
+    color: white;
+}
