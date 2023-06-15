@@ -2,10 +2,10 @@ import {useNavigate} from "react-router-dom";
 import {useContext} from "react";
 import AuthContext from "../../context/AuthProvider";
 import style from './Home.module.css';
-import {HomeAdministrador} from "./homeImpl/HomeAdministrador";
-import {HomeCoordenador} from "./homeImpl/HomeCoordenador";
-import {HomeProfessor} from "./homeImpl/HomeProfessor";
-import {HomeAluno} from "./homeImpl/HomeAluno";
+import {HomeAdministrador} from "./homeImpl/homeAdministrador/HomeAdministrador";
+import {HomeCoordenador} from "./homeImpl/homeCoordenador/HomeCoordenador";
+import {HomeProfessor} from "./homeImpl/homeProfessor/HomeProfessor";
+import {HomeAluno} from "./homeImpl/homeAluno/HomeAluno";
 
 
 const Home = () => {
@@ -21,7 +21,7 @@ const Home = () => {
     }
 
     const getComponent = () => {
-        switch (role) {
+        switch (userData.authorities[0].authority) {
             case "Administrador":
                 return <HomeAdministrador/>;
             case "Coordenador":

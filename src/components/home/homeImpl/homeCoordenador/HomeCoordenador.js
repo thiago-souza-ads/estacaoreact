@@ -1,5 +1,5 @@
 import {Navbar, Container, Row, Col, Nav, Card} from "react-bootstrap";
-import styles from "./HomeAluno.module.css";
+import styles from "./HomeCoordenador.module.css";
 import {Link} from "react-router-dom";
 
 export const HomeCoordenador = () => {
