@@ -28,7 +28,7 @@ export const HomeAdministrador = () => {
                 <Col md={12} className={styles.column12}>
                     <Card style={{width: "40%", backgroundColor: "whitesmoke", height: "32rem", borderRadius: '10px'}}>
                         <Card.Body>
-                            <Card.Title style={{color: "black", bold: true}}>TESTE Matheus</Card.Title>
+                            <Card.Title style={{color: "black", bold: true}}>Home Administrador</Card.Title>
                             <Card.Text
                                 style={{color: "black", bold: false, textAlign: 'justify', textJustify: 'inter-word'}}>
                                 O Exame Nacional de Desempenho dos Estudantes (Enade) é uma ferramenta de avaliação do

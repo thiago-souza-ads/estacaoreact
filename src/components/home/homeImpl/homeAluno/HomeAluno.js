@@ -28,7 +28,7 @@ export const HomeAluno = () => {
                 <Col md={12} className={styles.column12}>
                     <Card style={{width: "40%", backgroundColor: "whitesmoke", height: "32rem", borderRadius: '10px'}}>
                         <Card.Body>
-                            <Card.Title style={{color: "black",bold: true}}>TESTE Aluno</Card.Title>
+                            <Card.Title style={{color: "black",bold: true}}>Home Aluno</Card.Title>
                             <Card.Text style={{color: "black",bold: false, textAlign: 'justify', textJustify:'inter-word'}}>
                                 O Exame Nacional de Desempenho dos Estudantes (Enade) é uma ferramenta de avaliação do Governo Federal aplicada por meio do Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (Inep). Ele avalia o rendimento dos concluintes dos cursos de graduação em relação aos conteúdos programáticos previstos nas diretrizes curriculares dos cursos, o desenvolvimento de competências e habilidades necessárias ao aprofundamento da formação geral e profissional, e o nível de atualização dos estudantes com relação à realidade brasileira e mundial. O Enade é obrigatório para estudantes ingressantes e concluintes habilitados de cursos de bacharelado e superiores de tecnologia vinculados às áreas de avaliação da edição. A situação de regularidade do estudante é registrada no histórico escolar. O Enade tem enorme importância na avaliação das Instituições de Ensino Superior (IES) pelo Sistema Nacional de Avaliação da Educação Superior (Sinaes), principalmente pelo peso relativo que tem no cômputo dos conceitos avaliativos dos cursos e da própria IES
                             </Card.Text>
