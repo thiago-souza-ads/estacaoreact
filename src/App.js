@@ -12,6 +12,7 @@ import RequireAuth from './components/RequireAuth';
 import { Routes, Route } from 'react-router-dom';
 import Usuarios from "./components/usuarios/Usuarios";
 import Dashboard from "./components/dashboard/Dashboard";
+import Alunos from "./components/alunos/Alunos";
 
 const ROLES = {
   'Professor': 1001,
@@ -53,6 +54,10 @@ function App() {
 
         <Route element={<RequireAuth allowedRoles={[ROLES.Administrador, ROLES.Coordenador]} />}>
           <Route path="/usuarios" element={<Usuarios />} />
+        </Route>
+
+        <Route element={<RequireAuth allowedRoles={[ROLES.Administrador, ROLES.Coordenador]} />}>
+          <Route path="/alunos" element={<Alunos />} />
         </Route>
 
         {/* Somente para Administradores */}
