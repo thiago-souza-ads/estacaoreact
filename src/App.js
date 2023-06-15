@@ -5,7 +5,7 @@ import Layout from './components/Layout';
 import Editor from './components/Editor';
 import Admin from './components/Admin';
 import Missing from './components/naoEncontrada/Missing';
-import Unauthorized from './components/Unauthorized';
+import Unauthorized from './components/naoAutorizado/Unauthorized';
 import Lounge from './components/Lounge';
 import LinkPage from './components/LinkPage';
 import RequireAuth from './components/RequireAuth';
@@ -31,6 +31,9 @@ function App() {
         <Route path="unauthorized" element={<Unauthorized />} />
 
         {/* Rotas Protegidas */}
+
+
+        {/* Mista entre ususarios */}
         <Route element={<RequireAuth allowedRoles={[ROLES.Aluno, ROLES.Administrador, ROLES.Coordenador, ROLES.Professor]} />}>
           <Route path="/" element={<Home />} />
         </Route>
@@ -47,9 +50,18 @@ function App() {
           <Route path="lounge" element={<Lounge />} />
         </Route>
 
-        <Route element={<RequireAuth allowedRoles={[ROLES.Aluno, ROLES.Administrador, ROLES.Coordenador, ROLES.Professor]} />}>
+        <Route element={<RequireAuth allowedRoles={[ROLES.Administrador, ROLES.Coordenador]} />}>
           <Route path="/usuarios" element={<Usuarios />} />
         </Route>
+
+        {/* Somente para Administradores */}
+
+        {/* Somente para Coordenadores */}
+
+        {/* Somente para Professores */}
+
+        {/* Somente para Alunos */}
+
 
         {/* Liberada */}
         <Route path="*" element={<Missing />} />
