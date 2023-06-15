@@ -11,6 +11,7 @@ import LinkPage from './components/LinkPage';
 import RequireAuth from './components/RequireAuth';
 import { Routes, Route } from 'react-router-dom';
 import Usuarios from "./components/usuarios/Usuarios";
+import Dashboard from "./components/dashboard/Dashboard";
 
 const ROLES = {
   'Professor': 1001,
@@ -55,6 +56,9 @@ function App() {
         </Route>
 
         {/* Somente para Administradores */}
+        <Route element={<RequireAuth allowedRoles={[ROLES.Administrador]} />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Route>
 
         {/* Somente para Coordenadores */}
 
