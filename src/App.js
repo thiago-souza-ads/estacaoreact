@@ -4,7 +4,7 @@ import Home from './components/home/Home';
 import Layout from './components/Layout';
 import Editor from './components/Editor';
 import Admin from './components/Admin';
-import Missing from './components/Missing';
+import Missing from './components/naoEncontrada/Missing';
 import Unauthorized from './components/Unauthorized';
 import Lounge from './components/Lounge';
 import LinkPage from './components/LinkPage';
@@ -24,13 +24,13 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        {/* public routes */}
+        {/* Rotas Publicas */}
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="linkpage" element={<LinkPage />} />
         <Route path="unauthorized" element={<Unauthorized />} />
 
-        {/* we want to protect these routes */}
+        {/* Rotas Protegidas */}
         <Route element={<RequireAuth allowedRoles={[ROLES.Aluno, ROLES.Administrador, ROLES.Coordenador, ROLES.Professor]} />}>
           <Route path="/" element={<Home />} />
         </Route>
@@ -51,7 +51,7 @@ function App() {
           <Route path="/usuarios" element={<Usuarios />} />
         </Route>
 
-        {/* catch all */}
+        {/* Liberada */}
         <Route path="*" element={<Missing />} />
       </Route>
     </Routes>
