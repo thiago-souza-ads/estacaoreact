@@ -14,6 +14,8 @@ import Usuarios from "./components/usuarios/Usuarios";
 import Dashboard from "./components/dashboard/Dashboard";
 import Alunos from "./components/alunos/Alunos";
 import Mapa from "./components/mapa/Mapa";
+import Questionario from "./components/questionarios/Questionarios";
+import Questionarios from "./components/questionarios/Questionarios";
 
 const ROLES = {
   'Professor': 1001,
@@ -63,6 +65,10 @@ function App() {
 
         <Route element={<RequireAuth allowedRoles={[ROLES.Administrador, ROLES.Coordenador]} />}>
           <Route path="/mapas" element={<Mapa />} />
+        </Route>
+
+        <Route element={<RequireAuth allowedRoles={[ROLES.Administrador, ROLES.Coordenador]} />}>
+          <Route path="/questionarios" element={<Questionarios />} />
         </Route>
 
         {/* Somente para Administradores */}

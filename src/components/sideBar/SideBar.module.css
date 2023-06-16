@@ -14,16 +14,33 @@
     transition: width 0.3s ease;
 }
 
+.home-button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.user-sidebar .home-button svg {
+    margin-right: 5px;
+}
+
 .user-sidebar.open {
     width: 250px;
 }
+
 .user-sidebar .hidden {
     display: none;
 }
+
 .user-sidebar.closed {
     background-color: #c3c3c3;
 }
-
 
 .user-sidebar .avatar-container .avataaar {
     width: 100px;
@@ -53,7 +70,8 @@
     color: #007bff;
 }
 
-.user-sidebar .logout-button {
+.user-sidebar .logout-button,
+.user-sidebar .home-button {
     padding: 5px 10px;
     border: none;
     background-color: #333;
@@ -62,9 +80,11 @@
     border-radius: 5px;
     display: flex;
     align-items: center;
+    margin-bottom: 10px;
 }
 
-.user-sidebar .logout-button svg {
+.user-sidebar .logout-button svg,
+.user-sidebar .home-button svg {
     margin-right: 5px;
 }
 

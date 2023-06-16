@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import styles from './SideBar.module.css';
 import AuthContext from '../../context/AuthProvider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPowerOff, faBars } from '@fortawesome/free-solid-svg-icons';
+import { faPowerOff, faBars, faHome } from '@fortawesome/free-solid-svg-icons';
 import Avatar from 'avataaars';
 
 const SideBar = ({ user }) => {
@@ -48,6 +48,9 @@ const SideBar = ({ user }) => {
             </Link>
             {sidebarOpen && (
                 <div className={`flexGrow ${styles.closed}`}>
+                    <button className={styles['home-button']} onClick={() => navigate('/')}> {/* Adicione o botão Home */}
+                        <FontAwesomeIcon icon={faHome} size="sm" /> Home
+                    </button>
                     <button className={styles['logout-button']} onClick={logout}>
                         <FontAwesomeIcon icon={faPowerOff} size="sm" /> Sair
                     </button>
@@ -58,7 +61,6 @@ const SideBar = ({ user }) => {
             </div>
         </div>
     );
-
 };
 
 export default SideBar;

@@ -13,6 +13,9 @@ export const HomeAdministrador = () => {
                     <Nav.Link as={Link} to="/mapas">
                         Mapas
                     </Nav.Link>
+                    <Nav.Link as={Link} to="/questionarios">
+                        Questionarios
+                    </Nav.Link>
                     <Nav.Link as={Link} to="/professores">
                         Professores
                     </Nav.Link>

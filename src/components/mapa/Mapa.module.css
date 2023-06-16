@@ -25,18 +25,20 @@
 }
 
 .mapasTable {
+    border-radius: 10px;
     width: 100%;
     border-collapse: collapse;
 }
 
 .mapasTable th,
 .mapasTable td {
+    background-color: #333333;
     border: 1px solid #dee2e6;
     padding: 8px;
 }
 
 .mapasTable th {
-    background-color: #f9f9f9;
+    background-color: black;
 }
 
 .mapasTable td:nth-child(1) {
