@@ -3,8 +3,14 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons';
 import styles from './Mapa.module.css';
+import useAuth from "../../hooks/useAuth";
 
 const Mapa = () => {
+    const API_URL = "https://enadejava-1685497331322.azurewebsites.net";
+    // const API_URL = "http://localhost:8080";
+    const MAPAS_URL = "/api/v1/mapas";
+    const {auth} = useAuth();
+    const {accessToken} = auth;
     const [mapas, setMapas] = useState([]);
     const [anoBase, setAnoBase] = useState('');
     const [editingMapa, setEditingMapa] = useState(null);
@@ -16,7 +22,12 @@ const Mapa = () => {
 
     const fetchMapas = async () => {
         try {
-            const response = await axios.get('/api/mapas'); // Adjust the API endpoint as needed
+            const response = await axios.get(API_URL + MAPAS_URL, {
+                headers: {
+                    "Authorization": `Bearer ${accessToken}`,
+                },
+            });
+            console.log(response.data);
             setMapas(response.data);
             setLoading(false);
         } catch (error) {
