@@ -24,7 +24,7 @@ const SideBar = ({ user }) => {
     return (
         <div className={`${styles['user-sidebar']} ${sidebarOpen ? styles.open : styles.closed}`}>
             {sidebarOpen && (
-                <div className={styles['avatar-container']}>
+                <div className={styles['avatar-container']} onClick={() =>  navigate('/editar-avatar')}>
                     <Avatar
                         className="avataaar"
                         avatarStyle="Circle"

@@ -9,8 +9,8 @@ import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 
 const AvatarEdit = () => {
-    const API_URL = "https://enadejava-1685497331322.azurewebsites.net";
-    const AVATAR_URL = "/api/v1/atualizar-avatar";
+    const API_URL = "http://localhost:8080";
+    const AVATAR_URL = "/api/v1/usuarios/atualizar-avatar";
     const [avatar, setAvatar] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const {auth} = useContext(AuthContext);
@@ -47,18 +47,21 @@ const AvatarEdit = () => {
     };
 
     const saveAvatar = () => {
-        user.avatar = avatar;
-
-         axios.post( API_URL + AVATAR_URL, user,
-             {
-                 headers: {
-                     "Content-Type": "application/json",
-                     "Authorization": `Bearer ${accessToken}`,
-                 },
-             })
+        auth.usuario.avatar = avatar;
+        axios
+            .post(
+                `${API_URL}${AVATAR_URL}`,
+                auth.usuario,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${auth.accessToken}`,
+                    },
+                }
+            )
             .then(response => {
                 console.log(response);
-                setAuth({ user: usuario.login, password: usuario.password , roles: usuario.roles[0], accessToken, usuario: user });
+                setAuth({ ...auth });
             })
             .catch((error) => {
                 console.log(error.message);
