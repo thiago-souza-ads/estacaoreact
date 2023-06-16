@@ -9,7 +9,7 @@ import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 
 const AvatarEdit = () => {
-    const API_URL = "http://localhost:8080";
+    const API_URL = "https://enadejava-1685497331322.azurewebsites.net";
     const AVATAR_URL = "/api/v1/usuarios/atualizar-avatar";
     const [avatar, setAvatar] = useState({});
     const [isLoading, setIsLoading] = useState(true);
