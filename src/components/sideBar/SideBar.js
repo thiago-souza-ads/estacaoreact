@@ -46,7 +46,7 @@ const SideBar = ({ user }) => {
             )}
             <h2 className={sidebarOpen ? styles.closed : styles.hidden}>{user.nome}</h2>
             <h3 className={sidebarOpen ? styles.closed : styles.hidden}>{user.roles[0].nome}</h3>
-            <Link to="/linkpage" className={sidebarOpen ? styles.closed : styles.hidden}>
+            <Link to="/editar-perfil" className={sidebarOpen ? styles.closed : styles.hidden}>
                 Editar Perfil
             </Link>
             {sidebarOpen && (

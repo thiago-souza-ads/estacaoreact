@@ -13,7 +13,6 @@ const Home = () => {
     const {usuario} = auth;
     const userData = usuario;
     const navigate = useNavigate();
-    const role = userData.roles[0].name;
 
     const logout = async () => {
         setAuth({});
