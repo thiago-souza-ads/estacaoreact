@@ -1,4 +1,3 @@
-import {useNavigate} from "react-router-dom";
 import {useContext} from "react";
 import AuthContext from "../../context/AuthProvider";
 import style from './Home.module.css';
@@ -9,15 +8,9 @@ import {HomeAluno} from "./homeImpl/homeAluno/HomeAluno";
 
 
 const Home = () => {
-    const {setAuth, auth} = useContext(AuthContext);
+    const {auth} = useContext(AuthContext);
     const {usuario} = auth;
     const userData = usuario;
-    const navigate = useNavigate();
-
-    const logout = async () => {
-        setAuth({});
-        navigate('/linkpage');
-    }
 
     const getComponent = () => {
         switch (userData.authorities[0].authority) {

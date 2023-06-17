@@ -1,14 +1,12 @@
 import React, {useContext, useEffect, useState} from "react";
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
 import AuthContext from "../../context/AuthProvider";
 import {toast, ToastContainer} from "react-toastify";
 import style from "../home/Home.module.css";
 
 const PerfilEdit = () => {
-    const {setAuth, auth} = useContext(AuthContext);
+    const {auth} = useContext(AuthContext);
     const {usuario} = auth;
-    const navigate = useNavigate();
     const {accessToken} = auth;
 
     const [name, setName] = useState("");
@@ -21,7 +19,6 @@ const PerfilEdit = () => {
     const PROFESSORES_URL = "/api/v1/professores/";
     const COORDENADORES_URL = "/api/v1/coordenadores/";
     const ADMINISTRADORES_URL = "/api/v1/administradores/";
-    let nomeDoCurso = '';
 
     useEffect(() => {
         loadUserData();
@@ -37,15 +34,11 @@ const PerfilEdit = () => {
     const loadRelatedEntity = async () => {
         let endpoint = getUrl();
         axios
-            .get(
-                endpoint,
-                {
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${accessToken}`,
-                    },
-                }
-            )
+            .get(endpoint, {
+                headers: {
+                    "Content-Type": "application/json", "Authorization": `Bearer ${accessToken}`,
+                },
+            })
             .then((response) => {
                 let data = response.data;
                 setRelatedEntity(data);
@@ -78,21 +71,16 @@ const PerfilEdit = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        axios.put(`${BASE_URL_API}/api/v1/usuarios/${usuario.id}/`, {usuario}, {
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${accessToken}`,
-            },
-        });
         const updatedUserData = {
-            ...usuario,
-            nome: name,
-            login: email,
+            ...usuario, nome: name, login: email,
         };
 
         try {
-            const response = await axios.put("/api/update-profile", updatedUserData);
-            console.log("Dados do perfil atualizados:", response.data);
+            axios.put(`${BASE_URL_API}/api/v1/usuarios/${usuario.id}/`, {updatedUserData}, {
+                headers: {
+                    "Content-Type": "application/json", "Authorization": `Bearer ${accessToken}`,
+                },
+            });
             setName("");
             setEmail("");
             toast.success("Perfil salvo com sucesso!");
@@ -101,10 +89,18 @@ const PerfilEdit = () => {
         }
     };
 
-    return (
-        <>
+    return (<>
             <div className={style.fullScreen}>
-                <div style={{ justifyContent: "center", alignItems: "center", display: "flex", flexDirection: "column", marginTop: "20px", marginBottom: "20px", marginLeft: "20px", marginRight: "20px"}}>
+                <div style={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                    display: "flex",
+                    flexDirection: "column",
+                    marginTop: "20px",
+                    marginBottom: "20px",
+                    marginLeft: "20px",
+                    marginRight: "20px"
+                }}>
                     <h2 style={{color: "#050505"}}>Editar Perfil</h2>
                     <div>
                         <p>Variáveis do Usuário</p>
@@ -129,21 +125,18 @@ const PerfilEdit = () => {
                             />
                         </div>
                     </div>
-                    {access !== 'Administrador' && relatedEntity && (
-                        <>
+                    {access !== 'Administrador' && relatedEntity && (<>
                             <p style={{color: "#050505"}}>Nivel de autorização: </p>
-                            {access === 'Aluno' && (
-                                <>
+                            {access === 'Aluno' && (<>
                                     <label style={{color: "#050505"}}>Acesso:</label>
                                     <span style={{color: "#050505"}}>{access}</span>
                                     <label style={{color: "#050505"}}>Curso:</label>
-                                    <span style={{color: "#050505"}}>{ relatedEntity.curso.nome }</span>
+                                    <span style={{color: "#050505"}}>{relatedEntity.curso.nome}</span>
                                     <label style={{color: "#050505"}}>Coordenador:</label>
-                                    <span style={{color: "#050505"}}>{ relatedEntity.curso.coordenador.usuario.nome }</span>
-                                </>
-                            )}
-                        </>
-                    )}
+                                    <span
+                                        style={{color: "#050505"}}>{relatedEntity.curso.coordenador.usuario.nome}</span>
+                                </>)}
+                        </>)}
                     <form onSubmit={handleSubmit}>
                         <button type="submit">Salvar</button>
                     </form>

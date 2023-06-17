@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const AvatarOptions = {
     topType: [
         { value: 'NoHair', label: 'Sem cabelo' },

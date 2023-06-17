@@ -18,14 +18,9 @@ const AvatarEdit = () => {
     const {auth} = useContext(AuthContext);
     const { setAuth } = useAuth();
     const {usuario} = auth;
-    const {accessToken} = auth;
-    let user;
 
     useEffect(() => {
-
-        user = usuario;
         const usuarioAvatar = usuario.avatar;
-
         setAvatar(usuarioAvatar);
         setIsLoading(false);
     }, []);
@@ -62,16 +57,12 @@ const AvatarEdit = () => {
                 }
             )
             .then(response => {
-                console.log(response);
                 setAuth({ ...auth });
                 toast.success("Avatar salvo com sucesso!");
             })
             .catch((error) => {
-                console.log(error.message);
                 toast.error("Erro ao salvar o avatar.");
             });
-
-        console.log("Saved Avatar:", avatar);
     };
 
     if (isLoading) {
