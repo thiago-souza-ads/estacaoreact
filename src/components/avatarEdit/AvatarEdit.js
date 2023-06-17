@@ -82,7 +82,7 @@ const AvatarEdit = () => {
         <>
         <div className={style.fullScreen}>
             <Row style={{display: "flex", justifyContent: "center"}}>
-                <h2>Personalize seu Avatar</h2>
+                <h2 style={{color : "black"}}>Personalize seu Avatar</h2>
             </Row>
 
             <div>
@@ -329,8 +329,8 @@ const AvatarEdit = () => {
             </div>
             <Row style={{display: "grid", justifyContent: "center"}}>
                 <Col md={4}>
-                    <button onClick={generateRandomAvatar} style={{ marginRight:"10px"}}>Gerar aleatório</button>
-                    <button onClick={saveAvatar}>Salvar</button>
+                    <button onClick={generateRandomAvatar} style={{ marginRight:"10px", color: "white", backgroundColor: "black", borderRadius: "10px"}}>Gerar aleatório</button>
+                    <button onClick={saveAvatar} style={{ marginRight:"10px", color: "white", backgroundColor: "green", borderRadius: "10px"}}>Salvar</button>
                 </Col>
 
             </Row>
