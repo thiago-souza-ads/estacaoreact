@@ -14,7 +14,8 @@ const PerfilEdit = () => {
     const [access, setAccess] = useState("");
     const [relatedEntity, setRelatedEntity] = useState(null);
 
-    const BASE_URL_API = "http://localhost:8080";
+    const BASE_URL_API = "https://enadejava-1685497331322.azurewebsites.net";
+    // const BASE_URL_API = "http://localhost:8080";
     const ALUNOS_URL = "/api/v1/alunos/";
     const PROFESSORES_URL = "/api/v1/professores/";
     const COORDENADORES_URL = "/api/v1/coordenadores/";
