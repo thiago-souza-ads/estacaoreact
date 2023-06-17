@@ -98,6 +98,9 @@ const AvatarEdit = () => {
                             clotheType={avatar.clotheType}
                             clotheColor={avatar.clotheColor}
                             eyeType={avatar.eyeType}
+                            hatColor={avatar.hatColor}
+                            graphicType={avatar.graphicType}
+                            facialHairColor={avatar.facialHairColor}
                             eyebrowType={avatar.eyebrowType}
                             mouthType={avatar.mouthType}
                             skinColor={avatar.skinColor}
@@ -210,7 +213,7 @@ const AvatarEdit = () => {
                             <div>
                                 <h5> Tom da pele </h5>
                                 <select style={{width: "100%"}}
-                                    value={avatar.topType}
+                                    value={avatar.skinColor}
                                     onChange={(event) =>
                                         updateAvatarProperty("skinColor", event.target.value)
                                     }
@@ -232,6 +235,22 @@ const AvatarEdit = () => {
                                     }
                                 >
                                     {AvatarOptions.topType.map((option) => (
+                                        <option key={option.value} value={option.value}>
+                                            {option.label}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                            {/* Rest of the options */}
+                            <div>
+                                <h5> Cor do Cabelo </h5>
+                                <select style={{width: "100%"}}
+                                        value={avatar.hairColor}
+                                        onChange={(event) =>
+                                            updateAvatarProperty("hairColor", event.target.value)
+                                        }
+                                >
+                                    {AvatarOptions.hairColor.map((option) => (
                                         <option key={option.value} value={option.value}>
                                             {option.label}
                                         </option>
