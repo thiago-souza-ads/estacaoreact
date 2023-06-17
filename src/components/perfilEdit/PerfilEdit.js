@@ -16,7 +16,7 @@ const PerfilEdit = () => {
     const [access, setAccess] = useState("");
     const [relatedEntity, setRelatedEntity] = useState(null);
 
-    const BASE_URL_API = "https://enadejava-1685497331322.azurewebsites.net";
+    const BASE_URL_API = "http://localhost:8080";
     const ALUNOS_URL = "/api/v1/alunos/";
     const PROFESSORES_URL = "/api/v1/professores/";
     const COORDENADORES_URL = "/api/v1/coordenadores/";
@@ -48,7 +48,6 @@ const PerfilEdit = () => {
             )
             .then((response) => {
                 let data = response.data;
-                console.log("Data:", data);
                 setRelatedEntity(data);
                 toast.success("Perfil identificado!");
             })
@@ -93,13 +92,12 @@ const PerfilEdit = () => {
 
         try {
             const response = await axios.put("/api/update-profile", updatedUserData);
-            // Atualizar os dados de usuário no contexto ou fazer outras ações necessárias
             console.log("Dados do perfil atualizados:", response.data);
-            // Reiniciar os campos após a submissão
             setName("");
             setEmail("");
+            toast.success("Perfil salvo com sucesso!");
         } catch (error) {
-            console.log("Erro ao atualizar o perfil:", error);
+            toast.error("Erro ao identificar o perfil!");
         }
     };
 
@@ -130,16 +128,14 @@ const PerfilEdit = () => {
                                 required
                             />
                         </div>
-                        <div>
-                            <label style={{color: "#050505"}}>Acesso:</label>
-                            <span style={{color: "#050505"}}>{access}</span>
-                        </div>
                     </div>
-                    {relatedEntity && (
+                    {access !== 'Administrador' && relatedEntity && (
                         <>
                             <p style={{color: "#050505"}}>Nivel de autorização: </p>
                             {access === 'Aluno' && (
                                 <>
+                                    <label style={{color: "#050505"}}>Acesso:</label>
+                                    <span style={{color: "#050505"}}>{access}</span>
                                     <label style={{color: "#050505"}}>Curso:</label>
                                     <span style={{color: "#050505"}}>{ relatedEntity.curso.nome }</span>
                                     <label style={{color: "#050505"}}>Coordenador:</label>
