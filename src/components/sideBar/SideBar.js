@@ -35,6 +35,9 @@ const SideBar = ({ user }) => {
                         clotheType={avatarUser.clotheType}
                         clotheColor={avatarUser.clotheColor}
                         eyeType={avatarUser.eyeType}
+                        hatColor={avatarUser.hatColor}
+                        graphicType={avatarUser.graphicType}
+                        facialHairColor={avatarUser.facialHairColor}
                         eyebrowType={avatarUser.eyebrowType}
                         mouthType={avatarUser.mouthType}
                         skinColor={avatarUser.skinColor}

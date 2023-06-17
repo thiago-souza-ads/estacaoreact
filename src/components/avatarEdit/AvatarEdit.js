@@ -108,13 +108,13 @@ const AvatarEdit = () => {
                     </Col>
                 </Row>
                 <Row style={{display: "flex", justifyContent: "center"}}>
-                    <Col md={6} style={{display: "flex", justifyContent: "center", marginRight: "20px"}}>
+                    <Col md={6} style={{display: "flex", justifyContent: "center"}}>
                         <Row style={{display: "flex", justifyContent: "center"}}>
-                            <Col md={6}>
+                            <Col style={{ justifyContent: "center", marginRight: "10px"}} md={6}>
                                 {/* Rest of the options */}
-                                <div>
-                                    <h5> Tipo de camiseta </h5>
-                                    <select style={{width: "100%"}}
+                                 <div style={{ textAlign: "center", alignItems: "center"}}>
+                                    <h5 style={{color : "black"}}> Tipo de camiseta </h5>
+                                    <select style={{width: "100%", borderRadius:  "10px"}}
                                         value={avatar.clotheType}
                                         onChange={(event) =>
                                             updateAvatarProperty("clotheType", event.target.value)
@@ -128,9 +128,9 @@ const AvatarEdit = () => {
                                     </select>
                                 </div>
                                 {/* Rest of the options */}
-                                <div>
-                                    <h5> Cor da camiseta </h5>
-                                    <select style={{width: "100%"}}
+                                 <div style={{justifyContent: "center", textAlign: "center", alignItems: "center"}}>
+                                    <h5 style={{color : "black"}}> Cor da camiseta </h5>
+                                    <select style={{width: "100%", borderRadius:  "10px"}}
                                         value={avatar.clotheColor}
                                         onChange={(event) =>
                                             updateAvatarProperty("clotheColor", event.target.value)
@@ -144,9 +144,9 @@ const AvatarEdit = () => {
                                     </select>
                                 </div>
                                 {/* Rest of the options */}
-                                <div>
-                                    <h5> Estampa camiseta </h5>
-                                    <select style={{width: "100%"}}
+                                 <div style={{justifyContent: "center", textAlign: "center", alignItems: "center"}}>
+                                    <h5 style={{color : "black"}}> Estampa camiseta </h5>
+                                    <select style={{width: "100%", borderRadius:  "10px"}}
                                         value={avatar.graphicType}
                                         onChange={(event) =>
                                             updateAvatarProperty("graphicType", event.target.value)
@@ -160,9 +160,9 @@ const AvatarEdit = () => {
                                     </select>
                                 </div>
                                 {/* Rest of the options */}
-                                <div>
-                                    <h5> Olhar </h5>
-                                    <select style={{width: "100%"}}
+                                 <div style={{justifyContent: "center", textAlign: "center", alignItems: "center"}}>
+                                    <h5 style={{color : "black"}}> Olhar </h5>
+                                    <select style={{width: "100%", borderRadius:  "10px"}}
                                         value={avatar.eyeType}
                                         onChange={(event) =>
                                             updateAvatarProperty("eyeType", event.target.value)
@@ -176,9 +176,9 @@ const AvatarEdit = () => {
                                     </select>
                                 </div>
                                 {/* Rest of the options */}
-                                <div>
-                                    <h5> Sombrancelha </h5>
-                                    <select style={{width: "100%"}}
+                                 <div style={{justifyContent: "center", textAlign: "center", alignItems: "center"}}>
+                                    <h5 style={{color : "black"}}> Sombrancelha </h5>
+                                    <select style={{width: "100%", borderRadius:  "10px"}}
                                         value={avatar.eyebrowType}
                                         onChange={(event) =>
                                             updateAvatarProperty("eyebrowType", event.target.value)
@@ -192,9 +192,9 @@ const AvatarEdit = () => {
                                     </select>
                                 </div>
                                 {/* Rest of the options */}
-                                <div>
-                                    <h5> Boca </h5>
-                                    <select style={{width: "100%"}}
+                                 <div style={{justifyContent: "center", textAlign: "center", alignItems: "center"}}>
+                                    <h5 style={{color : "black"}}> Boca </h5>
+                                    <select style={{width: "100%", borderRadius:  "10px"}}
                                         value={avatar.mouthType}
                                         onChange={(event) =>
                                             updateAvatarProperty("mouthType", event.target.value)
@@ -210,9 +210,9 @@ const AvatarEdit = () => {
                             </Col>
                         </Row>
                         <Col md={6}>
-                            <div>
-                                <h5> Tom da pele </h5>
-                                <select style={{width: "100%"}}
+                             <div style={{justifyContent: "center", textAlign: "center", alignItems: "center"}}>
+                                <h5 style={{color : "black"}}> Tom da pele </h5>
+                                <select style={{width: "100%", borderRadius:  "10px"}}
                                     value={avatar.skinColor}
                                     onChange={(event) =>
                                         updateAvatarProperty("skinColor", event.target.value)
@@ -226,9 +226,9 @@ const AvatarEdit = () => {
                                 </select>
                             </div>
                             {/* Rest of the options */}
-                            <div>
-                                <h5> Cabelo e acessórios </h5>
-                                <select style={{width: "100%"}}
+                             <div style={{justifyContent: "center", textAlign: "center", alignItems: "center"}}>
+                                <h5 style={{color : "black"}}> Cabelo e acessórios </h5>
+                                <select style={{width: "100%", borderRadius:  "10px"}}
                                     value={avatar.topType}
                                     onChange={(event) =>
                                         updateAvatarProperty("topType", event.target.value)
@@ -242,9 +242,9 @@ const AvatarEdit = () => {
                                 </select>
                             </div>
                             {/* Rest of the options */}
-                            <div>
-                                <h5> Cor do Cabelo </h5>
-                                <select style={{width: "100%"}}
+                             <div style={{justifyContent: "center", textAlign: "center", alignItems: "center"}}>
+                                <h5 style={{color : "black"}}> Cor do Cabelo </h5>
+                                <select style={{width: "100%", borderRadius:  "10px"}}
                                         value={avatar.hairColor}
                                         onChange={(event) =>
                                             updateAvatarProperty("hairColor", event.target.value)
@@ -258,9 +258,9 @@ const AvatarEdit = () => {
                                 </select>
                             </div>
                             {/* Rest of the options */}
-                            <div>
-                                <h5> Óculos </h5>
-                                <select style={{width: "100%"}}
+                             <div style={{justifyContent: "center", textAlign: "center", alignItems: "center"}}>
+                                <h5 style={{color : "black"}}> Óculos </h5>
+                                <select style={{width: "100%", borderRadius:  "10px"}}
                                     value={avatar.accessoriesType}
                                     onChange={(event) =>
                                         updateAvatarProperty("accessoriesType", event.target.value)
@@ -274,9 +274,9 @@ const AvatarEdit = () => {
                                 </select>
                             </div>
                             {/* Rest of the options */}
-                            <div>
-                                <h5> Cor do chapéu </h5>
-                                <select style={{width: "100%"}}
+                            <div style={{justifyContent: "center", textAlign: "center", alignItems: "center"}}>
+                                <h5 style={{color : "black"}}> Cor do chapéu </h5>
+                                <select style={{width: "100%", borderRadius:  "10px"}}
                                     value={avatar.hatColor}
                                     onChange={(event) =>
                                         updateAvatarProperty("hatColor", event.target.value)
@@ -290,9 +290,9 @@ const AvatarEdit = () => {
                                 </select>
                             </div>
                             {/* Rest of the options */}
-                            <div>
-                                <h5> Tipo de barba </h5>
-                                <select style={{width: "100%"}}
+                             <div style={{justifyContent: "center", textAlign: "center", alignItems: "center"}}>
+                                <h5 style={{color : "black"}}> Tipo de barba </h5>
+                                <select style={{width: "100%", borderRadius:  "10px"}}
                                     value={avatar.facialHairType}
                                     onChange={(event) =>
                                         updateAvatarProperty("facialHairType", event.target.value)
@@ -306,9 +306,9 @@ const AvatarEdit = () => {
                                 </select>
                             </div>
                             {/* Rest of the options */}
-                            <div>
-                                <h5> Cor da barba </h5>
-                                <select style={{width: "100%"}}
+                             <div style={{justifyContent: "center", textAlign: "center", alignItems: "center"}}>
+                                <h5 style={{color : "black"}}> Cor da barba </h5>
+                                <select style={{width: "100%", borderRadius:  "10px"}}
                                     value={avatar.facialHairColor}
                                     onChange={(event) =>
                                         updateAvatarProperty("facialHairColor", event.target.value)
@@ -328,8 +328,11 @@ const AvatarEdit = () => {
 
             </div>
             <Row style={{display: "grid", justifyContent: "center"}}>
-                <button onClick={generateRandomAvatar}>Gerar aleatório</button>
-                <button onClick={saveAvatar}>Salvar</button>
+                <Col md={4}>
+                    <button onClick={generateRandomAvatar} style={{ marginRight:"10px"}}>Gerar aleatório</button>
+                    <button onClick={saveAvatar}>Salvar</button>
+                </Col>
+
             </Row>
 
         </div>

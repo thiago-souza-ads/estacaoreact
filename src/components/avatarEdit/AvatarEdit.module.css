@@ -32,11 +32,11 @@
     margin-top: 20px;
 }
 
-.avatar-options h3 {
+.avatar-options h5 {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
-    color: #fff;
+    color: #050505;
 }
 
 .avatar-options select {
