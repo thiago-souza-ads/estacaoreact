@@ -3,6 +3,7 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import AuthContext from "../../context/AuthProvider";
 import {toast, ToastContainer} from "react-toastify";
+import style from "../home/Home.module.css";
 
 const PerfilEdit = () => {
     const {setAuth, auth} = useContext(AuthContext);
@@ -15,11 +16,12 @@ const PerfilEdit = () => {
     const [access, setAccess] = useState("");
     const [relatedEntity, setRelatedEntity] = useState(null);
 
-    const BASE_URL_API = "http://localhost:8080";
+    const BASE_URL_API = "https://enadejava-1685497331322.azurewebsites.net";
     const ALUNOS_URL = "/api/v1/alunos/";
     const PROFESSORES_URL = "/api/v1/professores/";
     const COORDENADORES_URL = "/api/v1/coordenadores/";
     const ADMINISTRADORES_URL = "/api/v1/administradores/";
+    let nomeDoCurso = '';
 
     useEffect(() => {
         loadUserData();
@@ -45,7 +47,9 @@ const PerfilEdit = () => {
                 }
             )
             .then((response) => {
-                setRelatedEntity(response.data);
+                let data = response.data;
+                console.log("Data:", data);
+                setRelatedEntity(data);
                 toast.success("Perfil identificado!");
             })
             .catch((err) => {
@@ -100,51 +104,59 @@ const PerfilEdit = () => {
     };
 
     return (
-        <div>
-            <h2>Editar Perfil</h2>
-            <div>
-                <p>Variáveis do Usuário</p>
-                <div>
-                    <label htmlFor="name">Nome:</label>
-                    <input
-                        type="text"
-                        id="name"
-                        value={name}
-                        onChange={handleNameChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="email">Login/Email:</label>
-                    <input
-                        type="email"
-                        id="email"
-                        value={email}
-                        onChange={handleEmailChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Acesso:</label>
-                    <span>{access}</span>
-                </div>
-            </div>
-            {relatedEntity && (
-                <div>
-                    <p>Variáveis da Classe</p>
-                    {access === 'Aluno' && (
+        <>
+            <div className={style.fullScreen}>
+                <div style={{ justifyContent: "center", alignItems: "center", display: "flex", flexDirection: "column", marginTop: "20px", marginBottom: "20px", marginLeft: "20px", marginRight: "20px"}}>
+                    <h2 style={{color: "#050505"}}>Editar Perfil</h2>
+                    <div>
+                        <p>Variáveis do Usuário</p>
                         <div>
-                            <label>Curso:</label>
-                            <span>{relatedEntity.curso?.nome}</span>
+                            <label htmlFor="name" style={{color: "#050505"}}>Nome:</label>
+                            <input
+                                type="text"
+                                id="name"
+                                value={name}
+                                onChange={handleNameChange}
+                                required
+                            />
                         </div>
+                        <div>
+                            <label htmlFor="email" style={{color: "#050505"}}>Login/Email:</label>
+                            <input
+                                type="email"
+                                id="email"
+                                value={email}
+                                onChange={handleEmailChange}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label style={{color: "#050505"}}>Acesso:</label>
+                            <span style={{color: "#050505"}}>{access}</span>
+                        </div>
+                    </div>
+                    {relatedEntity && (
+                        <>
+                            <p style={{color: "#050505"}}>Nivel de autorização: </p>
+                            {access === 'Aluno' && (
+                                <>
+                                    <label style={{color: "#050505"}}>Curso:</label>
+                                    <span style={{color: "#050505"}}>{ relatedEntity.curso.nome }</span>
+                                    <label style={{color: "#050505"}}>Coordenador:</label>
+                                    <span style={{color: "#050505"}}>{ relatedEntity.curso.coordenador.usuario.nome }</span>
+                                </>
+                            )}
+                        </>
                     )}
+                    <form onSubmit={handleSubmit}>
+                        <button type="submit">Salvar</button>
+                    </form>
                 </div>
-            )}
-            <form onSubmit={handleSubmit}>
-                <button type="submit">Salvar</button>
-            </form>
-            <ToastContainer/>
-        </div>
+
+                <ToastContainer/>
+            </div>
+        </>
+
 
     );
 };
