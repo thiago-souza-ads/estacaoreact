@@ -41,11 +41,12 @@ const PerfilEdit = () => {
             })
             .then((response) => {
                 let data = response.data;
+                console.log(response);
                 setRelatedEntity(data);
-                toast.success("Perfil identificado!");
+                toast.success("Curso vinculado a este perfil identificado!");
             })
             .catch((err) => {
-                toast.error("Erro ao identificar o perfil!");
+                toast.error("Usuario não possui curso vinculado!");
             });
     };
     const getUrl = () => {
@@ -72,21 +73,28 @@ const PerfilEdit = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const updatedUserData = {
-            ...usuario, nome: name, login: email,
+            ...usuario,
+            nome: name,
+            login: email,
         };
-
-        try {
-            axios.put(`${BASE_URL_API}/api/v1/usuarios/${usuario.id}/`, {updatedUserData}, {
+        console.log(usuario);
+        console.log(accessToken);
+        axios
+            .put(`${BASE_URL_API}/api/v1/usuarios/${usuario.id}/`, usuario, {
                 headers: {
-                    "Content-Type": "application/json", "Authorization": `Bearer ${accessToken}`,
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${accessToken}`,
                 },
+            })
+            .then((response) => {
+                console.log(response);
+                // setName("");
+                // setEmail("");
+                toast.success("Perfil salvo com sucesso!");
+            })
+            .catch((err) => {
+                toast.error("Erro ao salvar a alteração!");
             });
-            setName("");
-            setEmail("");
-            toast.success("Perfil salvo com sucesso!");
-        } catch (error) {
-            toast.error("Erro ao identificar o perfil!");
-        }
     };
 
     return (<>
