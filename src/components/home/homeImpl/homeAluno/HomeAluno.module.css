@@ -1,3 +1,7 @@
+* {
+    color: black;
+}
+
 .navbar {
     background-color: #65c9ff;
     display: flex;
@@ -13,9 +17,18 @@
     background-color: rgba(130, 176, 231, 0.08);
 }
 
+.welcomeMenu {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
 .column12 {
     display: flex;
     justify-content: space-around;
+}
+.text {
+    vertical-align: center;
 }
 
 .footer {
