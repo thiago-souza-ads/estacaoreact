@@ -7,6 +7,8 @@ import style from "../home/Home.module.css";
 import {Col, Row} from "react-bootstrap";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AvatarEdit = () => {
     const API_URL = "https://enadejava-1685497331322.azurewebsites.net";
@@ -62,9 +64,11 @@ const AvatarEdit = () => {
             .then(response => {
                 console.log(response);
                 setAuth({ ...auth });
+                toast.success("Avatar salvo com sucesso!");
             })
             .catch((error) => {
                 console.log(error.message);
+                toast.error("Erro ao salvar o avatar.");
             });
 
         console.log("Saved Avatar:", avatar);
@@ -310,6 +314,7 @@ const AvatarEdit = () => {
             </Row>
 
         </div>
+            <ToastContainer />
         </>
     );
 };
