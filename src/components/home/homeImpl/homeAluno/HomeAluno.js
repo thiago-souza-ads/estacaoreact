@@ -26,27 +26,25 @@ export const HomeAluno = () => {
             </Navbar>
             
             <Container fluid>
-                <Container fluid>
-                    <Row>
-                        <Col md={12} className={styles.welcomeMenu}>
-                            <Col md={2}>
-                             Bem-Vindo! Juliana Marciel
-                            </Col>
-                            <Col md={2}>
-                                <button>Configurar seu avatar</button>
-                            </Col>
-                            <Col md={2}>
-                                <button>Iniciar jornada</button>
-                            </Col>
-                        </Col>  
-                    </Row>
-                </Container>
+
+                <Row style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "20px", paddingLeft: "60px" }}>
+                    <Col md={2}>
+                        Bem-Vindo! Juliana Marciel
+                    </Col>
+                    <Col md={2}>
+                        <button>Configurar seu avatar</button>
+                    </Col>
+                    <Col md={2}>
+                        <button>Iniciar jornada</button>
+                    </Col>
+                </Row>
+
 
                 <Col md={12} className={styles.column12}>
-                    <Col md={5} style={{border: "1px solid black"}}>
+                    <Col md={5} style={{border: "1px solid black", width: "40vw", height: "50vh", borderRadius: "10px", justifyContent: "center", alignItems: "center", display: "flex"}}>
                         <div className={styles.text}>testetestestewtessfdafsafsfafd</div>
                     </Col>
-                    <Col md={5} style={{border: "1px solid black"}}>
+                    <Col md={5} style={{border: "1px solid black", width: "40vw", height: "50vh", borderRadius: "10px", justifyContent: "center", alignItems: "center", display: "flex"}}>
                         <div>testetestestewtesd</div>
                     </Col>
                 </Col>
