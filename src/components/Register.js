@@ -3,6 +3,7 @@ import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from '../api/axios';
 import { Link } from "react-router-dom";
+import {toast, ToastContainer} from "react-toastify";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -62,10 +63,8 @@ const Register = () => {
                 }
             );
             // TODO: remove console.logs before deployment
-            console.log(JSON.stringify(response?.data));
-            //console.log(JSON.stringify(response))
+            toast.success("Salvo com sucesso!");
             setSuccess(true);
-            //clear state and controlled inputs
             setUser('');
             setPwd('');
             setMatchPwd('');
@@ -77,6 +76,7 @@ const Register = () => {
             } else {
                 setErrMsg('Erro ao cadastrar usuario')
             }
+            toast.error(err);
             errRef.current.focus();
         }
     }
@@ -176,6 +176,7 @@ const Register = () => {
                     </p>
                 </section>
             )}
+            <ToastContainer/>
         </>
     )
 }

@@ -18,14 +18,9 @@ const AvatarEdit = () => {
     const {auth} = useContext(AuthContext);
     const { setAuth } = useAuth();
     const {usuario} = auth;
-    const {accessToken} = auth;
-    let user;
 
     useEffect(() => {
-
-        user = usuario;
         const usuarioAvatar = usuario.avatar;
-
         setAvatar(usuarioAvatar);
         setIsLoading(false);
     }, []);
@@ -62,16 +57,12 @@ const AvatarEdit = () => {
                 }
             )
             .then(response => {
-                console.log(response);
                 setAuth({ ...auth });
                 toast.success("Avatar salvo com sucesso!");
             })
             .catch((error) => {
-                console.log(error.message);
                 toast.error("Erro ao salvar o avatar.");
             });
-
-        console.log("Saved Avatar:", avatar);
     };
 
     if (isLoading) {
@@ -82,7 +73,7 @@ const AvatarEdit = () => {
         <>
         <div className={style.fullScreen}>
             <Row style={{display: "flex", justifyContent: "center"}}>
-                <h2>Personalize seu Avatar</h2>
+                <h2 style={{color : "black"}}>Personalize seu Avatar</h2>
             </Row>
 
             <div>
@@ -329,8 +320,8 @@ const AvatarEdit = () => {
             </div>
             <Row style={{display: "grid", justifyContent: "center"}}>
                 <Col md={4}>
-                    <button onClick={generateRandomAvatar} style={{ marginRight:"10px"}}>Gerar aleatório</button>
-                    <button onClick={saveAvatar}>Salvar</button>
+                    <button onClick={generateRandomAvatar} style={{ marginRight:"10px", color: "white", backgroundColor: "black", borderRadius: "10px"}}>Gerar aleatório</button>
+                    <button onClick={saveAvatar} style={{ marginRight:"10px", color: "white", backgroundColor: "green", borderRadius: "10px"}}>Salvar</button>
                 </Col>
 
             </Row>

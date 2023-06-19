@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Logo from '../../assets/estacioWhiteBg.png';
 import axios from '../../api/axios';
 import styles from './Login.module.css';
+import {toast, ToastContainer} from "react-toastify";
 
 const LOGIN_URL = 'auth/authenticate';
 
@@ -52,8 +53,7 @@ const Login = () => {
                 }
             )
             .then((response) => {
-                console.log(JSON.stringify(response?.data));
-
+                toast.success("Acesso autorizado!");
                 const user = response?.data?.user;
                 const rolesName = user?.roles[0].nome;
                 let token = response?.data?.access_token;
@@ -109,6 +109,7 @@ const Login = () => {
                     </form>
                 </div>
             </div>
+            <ToastContainer/>
         </div>
     );
 }

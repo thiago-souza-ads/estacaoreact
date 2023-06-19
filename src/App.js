@@ -16,6 +16,7 @@ import Alunos from "./components/alunos/Alunos";
 import Mapa from "./components/mapa/Mapa";
 import Questionarios from "./components/questionarios/Questionarios";
 import AvatarEdit from "./components/avatarEdit/AvatarEdit";
+import PerfilEdit from "./components/perfilEdit/PerfilEdit";
 
 const ROLES = {
     'Professor': 1001,
@@ -43,6 +44,12 @@ function App() {
                     allowedRoles={[ROLES.Aluno, ROLES.Administrador, ROLES.Coordenador, ROLES.Professor]}/>}>
                     <Route path="/" element={<Home/>}/>
                 </Route>
+
+                <Route element={<RequireAuth
+                    allowedRoles={[ROLES.Aluno, ROLES.Administrador, ROLES.Coordenador, ROLES.Professor]}/>}>
+                    <Route path="/editar-perfil" element={<PerfilEdit/>}/>
+                </Route>
+
                 <Route element={<RequireAuth
                     allowedRoles={[ROLES.Aluno, ROLES.Administrador, ROLES.Coordenador, ROLES.Professor]}/>}>
                     <Route path="/editar-avatar" element={<AvatarEdit/>}/>

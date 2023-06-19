@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons';
 import styles from './Mapa.module.css';
 import useAuth from "../../hooks/useAuth";
+import {toast, ToastContainer} from "react-toastify";
 
 const Mapa = () => {
     const API_URL = "https://enadejava-1685497331322.azurewebsites.net";
@@ -27,11 +28,11 @@ const Mapa = () => {
                     "Authorization": `Bearer ${accessToken}`,
                 },
             });
-            console.log(response.data);
             setMapas(response.data);
             setLoading(false);
+            toast.success("Mapa salvo!");
         } catch (error) {
-            console.error('Erro ao buscar os mapas:', error);
+            toast.error("Erro ao identificar o perfil!");
             setLoading(false);
         }
     };
@@ -137,6 +138,7 @@ const Mapa = () => {
                 ))}
                 </tbody>
             </table>
+            <ToastContainer/>
         </div>
     );
 };
