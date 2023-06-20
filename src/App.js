@@ -17,6 +17,7 @@ import Mapa from "./components/mapa/Mapa";
 import Questionarios from "./components/questionarios/Questionarios";
 import AvatarEdit from "./components/avatarEdit/AvatarEdit";
 import PerfilEdit from "./components/perfilEdit/PerfilEdit";
+import Cursos from "./components/cursos/Cursos";
 
 const ROLES = {
     'Professor': 1001,
@@ -89,7 +90,9 @@ function App() {
                 <Route element={<RequireAuth allowedRoles={[ROLES.Administrador]}/>}>
                     <Route path="/dashboard" element={<Dashboard/>}/>
                 </Route>
-
+                <Route element={<RequireAuth allowedRoles={[ROLES.Administrador, ROLES.Coordenador]}/>}>
+                    <Route path="/cursos" element={<Cursos/>}/>
+                </Route>
                 {/* Somente para Coordenadores */}
 
                 {/* Somente para Professores */}
