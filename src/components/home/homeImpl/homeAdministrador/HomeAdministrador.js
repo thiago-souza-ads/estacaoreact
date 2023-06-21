@@ -1,32 +1,9 @@
 import {Card, Col, Container, Nav, Navbar, Row} from "react-bootstrap";
 import styles from "./HomeAdministrador.module.css";
-import {Link} from "react-router-dom";
 
 export const HomeAdministrador = () => {
     return (
         <>
-            <Navbar className={styles.navbar}>
-                <Nav className={`mr-auto ${styles.navbarNav}`}>
-                    <Nav.Link as={Link} to="/usuarios">
-                        Usuários
-                    </Nav.Link>
-                    <Nav.Link as={Link} to="/mapas">
-                        Mapas
-                    </Nav.Link>
-                    <Nav.Link as={Link} to="/questionarios">
-                        Questionarios
-                    </Nav.Link>
-                    <Nav.Link as={Link} to="/professores">
-                        Professores
-                    </Nav.Link>
-                    <Nav.Link as={Link} to="/alunos">
-                        Alunos
-                    </Nav.Link>
-                    <Nav.Link as={Link} to="/enade">
-                        Enade
-                    </Nav.Link>
-                </Nav>
-            </Navbar>
             <Container fluid>
                 <Col md={12} className={styles.column12}>
                     <Card style={{width: "40%", backgroundColor: "whitesmoke", height: "32rem", borderRadius: '10px'}}>

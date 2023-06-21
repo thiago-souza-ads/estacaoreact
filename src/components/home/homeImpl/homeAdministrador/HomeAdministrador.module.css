@@ -1,14 +1,3 @@
-.navbar {
-    background-color: #65c9ff;
-    display: flex;
-    justify-content: space-around;
-    margin: 15px;
-}
-
-.navbarNav {
-    display: contents;
-}
-
 .container {
     background-color: rgba(130, 176, 231, 0.08);
 }

@@ -1,6 +1,7 @@
 import { useLocation, Navigate, Outlet } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import SideBar from "./sideBar/SideBar";
+import NavBarSite from "./navBar/NavBarSite";
 
 const RequireAuth = ({ allowedRoles }) => {
     const { auth } = useAuth();
@@ -12,6 +13,7 @@ const RequireAuth = ({ allowedRoles }) => {
         <>
             {allowedRoles.includes(auth?.roles) ? (
                 <>
+                        <NavBarSite/>
                         <SideBar user={userData} />
                         <Outlet />
                 </>

@@ -5,6 +5,7 @@ import {HomeAdministrador} from "./homeImpl/homeAdministrador/HomeAdministrador"
 import {HomeCoordenador} from "./homeImpl/homeCoordenador/HomeCoordenador";
 import {HomeProfessor} from "./homeImpl/homeProfessor/HomeProfessor";
 import {HomeAluno} from "./homeImpl/homeAluno/HomeAluno";
+import NavBarSite from "../navBar/NavBarSite";
 
 
 const Home = () => {
