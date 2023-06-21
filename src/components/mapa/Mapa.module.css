@@ -1,9 +1,16 @@
+.fullScreen {
+    width: 90vw;
+    height: 100vh;
+    background-color: white;
+}
+
 .mapaContainer {
     width: 80%;
     margin: 0 auto;
     padding-top: 20px;
     text-align: center;
 }
+
 
 .formContainer {
     display: flex;

@@ -79,67 +79,70 @@ const Mapa = () => {
     }
 
     return (
-        <div className={styles.mapaContainer}>
-            <h1>Mapas</h1>
-            <div className={styles.formContainer}>
-                <input
-                    type="number"
-                    placeholder="Ano Base"
-                    value={anoBase}
-                    onChange={(e) => setAnoBase(e.target.value)}
-                />
-                <button className={styles.addButton} onClick={createMapa}>
-                    <FontAwesomeIcon icon={faPlus} />
-                </button>
-            </div>
-            <table className={styles.mapasTable}>
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Ano Base</th>
-                    <th>Data de Cadastro</th>
-                    <th>Data de Atualização</th>
-                    <th>Coordenador</th>
-                    <th>Aprovado</th>
-                    <th>Ações</th>
-                </tr>
-                </thead>
-                <tbody>
-                {mapas.map((mapa) => (
-                    <tr key={mapa.id}>
-                        <td>{mapa.id}</td>
-                        <td>{mapa.anoBase}</td>
-                        <td>{mapa.dataCadastro}</td>
-                        <td>{mapa.dataAtualizacao}</td>
-                        <td>{mapa.coordenador}</td>
-                        <td>{mapa.aprovado ? 'Sim' : 'Não'}</td>
-                        <td>
-                            {editingMapa && editingMapa.id === mapa.id ? (
-                                <>
-                                    <button className={styles.saveButton} onClick={updateMapa}>
-                                        Salvar
-                                    </button>
-                                    <button className={styles.cancelButton} onClick={cancelEdit}>
-                                        Cancelar
-                                    </button>
-                                </>
-                            ) : (
-                                <>
-                                    <button className={styles.editButton} onClick={() => editMapa(mapa)}>
-                                        <FontAwesomeIcon icon={faEdit} />
-                                    </button>
-                                    <button className={styles.deleteButton} onClick={() => deleteMapa(mapa.id)}>
-                                        <FontAwesomeIcon icon={faTrash} />
-                                    </button>
-                                </>
-                            )}
-                        </td>
+        <div className={styles.fullScreen}>
+            <div className={styles.mapaContainer}>
+                <h1 style={{color: "#010303", fontSize: "40px", textAlign:  "center"}}>Mapas</h1>
+                <div className={styles.formContainer}>
+                    <input
+                        type="number"
+                        placeholder="Ano Base"
+                        value={anoBase}
+                        onChange={(e) => setAnoBase(e.target.value)}
+                    />
+                    <button className={styles.addButton} onClick={createMapa}>
+                        <FontAwesomeIcon icon={faPlus} />
+                    </button>
+                </div>
+                <table style={{borderRadius:  "10px", border: "1px solid #010303", backgroundColor: "#010303", color: "#fff", textAlign: "center", padding: "10px"}}>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Ano Base</th>
+                        <th>Data de Cadastro</th>
+                        <th>Data de Atualização</th>
+                        <th>Coordenador</th>
+                        <th>Aprovado</th>
+                        <th>Ações</th>
                     </tr>
-                ))}
-                </tbody>
-            </table>
-            <ToastContainer/>
+                    </thead>
+                    <tbody>
+                    {mapas.map((mapa) => (
+                        <tr key={mapa.id}>
+                            <td>{mapa.id}</td>
+                            <td>{mapa.anoBase}</td>
+                            <td>{mapa.dataCadastro}</td>
+                            <td>{mapa.dataAtualizacao}</td>
+                            <td>{mapa.coordenador}</td>
+                            <td>{mapa.aprovado ? 'Sim' : 'Não'}</td>
+                            <td>
+                                {editingMapa && editingMapa.id === mapa.id ? (
+                                    <>
+                                        <button className={styles.saveButton} onClick={updateMapa}>
+                                            Salvar
+                                        </button>
+                                        <button className={styles.cancelButton} onClick={cancelEdit}>
+                                            Cancelar
+                                        </button>
+                                    </>
+                                ) : (
+                                    <>
+                                        <button className={styles.editButton} onClick={() => editMapa(mapa)}>
+                                            <FontAwesomeIcon icon={faEdit} />
+                                        </button>
+                                        <button className={styles.deleteButton} onClick={() => deleteMapa(mapa.id)}>
+                                            <FontAwesomeIcon icon={faTrash} />
+                                        </button>
+                                    </>
+                                )}
+                            </td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+                <ToastContainer/>
+            </div>
         </div>
+
     );
 };
 
