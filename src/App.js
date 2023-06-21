@@ -2,11 +2,8 @@ import Register from './components/Register';
 import Login from './components/login/Login';
 import Home from './components/home/Home';
 import Layout from './components/Layout';
-import Editor from './components/Editor';
-import Admin from './components/Admin';
 import Missing from './components/naoEncontrada/Missing';
 import Unauthorized from './components/naoAutorizado/Unauthorized';
-import Lounge from './components/Lounge';
 import LinkPage from './components/LinkPage';
 import RequireAuth from './components/RequireAuth';
 import {Route, Routes} from 'react-router-dom';
@@ -54,20 +51,6 @@ function App() {
                 <Route element={<RequireAuth
                     allowedRoles={[ROLES.Aluno, ROLES.Administrador, ROLES.Coordenador, ROLES.Professor]}/>}>
                     <Route path="/editar-avatar" element={<AvatarEdit/>}/>
-                </Route>
-
-                <Route
-                    element={<RequireAuth allowedRoles={[ROLES.Administrador, ROLES.Coordenador, ROLES.Professor]}/>}>
-                    <Route path="editor" element={<Editor/>}/>
-                </Route>
-
-                <Route element={<RequireAuth allowedRoles={[ROLES.Administrador, ROLES.Coordenador]}/>}>
-                    <Route path="admin" element={<Admin/>}/>
-                </Route>
-
-                <Route
-                    element={<RequireAuth allowedRoles={[ROLES.Administrador, ROLES.Coordenador, ROLES.Professor]}/>}>
-                    <Route path="lounge" element={<Lounge/>}/>
                 </Route>
 
                 <Route element={<RequireAuth allowedRoles={[ROLES.Administrador, ROLES.Coordenador]}/>}>
