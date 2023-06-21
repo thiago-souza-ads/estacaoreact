@@ -106,6 +106,7 @@ const Login = () => {
                         </div>
                         <button>Logar</button>
                         <div className={styles.error}>{errMsg}</div>
+                        <p> Não possui conta ainda? <a href="/register">Cadastre-se</a></p>
                     </form>
                 </div>
             </div>
