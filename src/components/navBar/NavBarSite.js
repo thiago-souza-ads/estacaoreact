@@ -1,7 +1,12 @@
 import { Nav, Navbar } from "react-bootstrap";
 import styles from "./NavBarSite.module.css";
-import { Link } from "react-router-dom";
+import {Link, Route} from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import Login from "../login/Login";
+import Register from "../Register";
+import LinkPage from "../LinkPage";
+import Unauthorized from "../naoAutorizado/Unauthorized";
+import Missing from "../naoEncontrada/Missing";
 
 const NavBarSite = () => {
     const { auth } = useAuth();
@@ -42,10 +47,11 @@ const NavBarSite = () => {
         { to: "/enade", label: "Enade" },
     ];
     const rotasPublicas = [
-        { path: "login", element: <Login /> },
-        { path: "register", element: <Register /> },
-        { path: "linkpage", element: <LinkPage /> },
-        { path: "unauthorized", element: <Unauthorized /> }
+        { to: "/login", label: "Login" },
+        { to: "/register", label: "Cadastre-se" },
+        { to: "/missing", label: "Tá perdido" },
+        { to: "/linkpage", label:"Links" },
+        { to: "/unauthorized", label: "Não autorizado" }
     ];
 
     let rotas = [];
