@@ -2,11 +2,28 @@
     color: black;
 }
 
-.navbar {
+button {
     background-color: #65c9ff;
+    color: #ffffff;
+    border-color: #3998cc;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+p{
+   font-size: 0.7rem;
+}
+
+.navbar {
+    background-color: #ffffff;
+    color: white;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     margin: 15px;
+    padding-left: 70px;
+    padding-right: 70px;
 }
 
 .navbarNav {
@@ -27,8 +44,36 @@
     display: flex;
     justify-content: space-around;
 }
-.text {
-    vertical-align: center;
+
+.jorneyColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 40%;
+    height: 100%;
+}
+
+.jorneySquare {
+    width: 100px;
+    height: 100px;
+    border: solid  1px black;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.jorneyNumber {
+    font-size: 3rem;
+    color: white;
+    height: 80%;
+    width: 80%;
+    border-radius: 50%;
+    background-color: #65c9ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .footer {
