@@ -1,57 +1,53 @@
-import { Nav, Navbar } from "react-bootstrap";
+import {Nav, Navbar} from "react-bootstrap";
 import styles from "./NavBarSite.module.css";
-import {Link, Route} from "react-router-dom";
+import {Link} from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Login from "../login/Login";
-import Register from "../Register";
-import LinkPage from "../LinkPage";
-import Unauthorized from "../naoAutorizado/Unauthorized";
-import Missing from "../naoEncontrada/Missing";
 
 const NavBarSite = () => {
-    const { auth } = useAuth();
-    const { usuario } = auth;
+    const {auth} = useAuth();
+    const {usuario} = auth;
 
     const rotasCoordenador = [
-        { to: "/", label: "Home" },
-        { to: "/usuarios", label: "Usuários" },
-        { to: "/mapas", label: "Mapas" },
-        { to: "/questionarios", label: "Questionários" },
-        { to: "/professores", label: "Professores" },
-        { to: "/alunos", label: "Alunos" },
-        { to: "/enade", label: "Enade" },
+        {to: "/", label: "Home"},
+        {to: "/usuarios", label: "Usuários"},
+        {to: "/mapas", label: "Mapas"},
+        {to: "/questionarios", label: "Questionários"},
+        {to: "/professores", label: "Professores"},
+        {to: "/alunos", label: "Alunos"},
+        {to: "/enade", label: "Enade"},
     ];
     const rotasProfessor = [
-        { to: "/", label: "Home" },
-        { to: "/usuarios", label: "Usuários" },
-        { to: "/mapas", label: "Mapas" },
-        { to: "/questionarios", label: "Questionários" },
-        { to: "/professores", label: "Professores" },
-        { to: "/alunos", label: "Alunos" },
-        { to: "/enade", label: "Enade" },
+        {to: "/", label: "Home"},
+        {to: "/usuarios", label: "Usuários"},
+        {to: "/mapas", label: "Mapas"},
+        {to: "/questionarios", label: "Questionários"},
+        {to: "/professores", label: "Professores"},
+        {to: "/alunos", label: "Alunos"},
+        {to: "/enade", label: "Enade"},
     ];
 
     const rotasAlunos = [
-        { to: "/", label: "Home" },
-        { to: "/usuarios", label: "Usuários" },
-        { to: "/mapas", label: "Mapas" },
-        { to: "/questionarios", label: "Questionários" },
-        { to: "/professores", label: "Professores" },
+        {to: "/", label: "Home"},
+        {to: "/usuarios", label: "Usuários"},
+        {to: "/mapas", label: "Mapas"},
+        {to: "/questionarios", label: "Questionários"},
+        {to: "/professores", label: "Professores"},
     ];
     const rotasAdministrador = [
-        { to: "/usuarios", label: "Usuários" },
-        { to: "/mapas", label: "Mapas" },
-        { to: "/questionarios", label: "Questionários" },
-        { to: "/professores", label: "Professores" },
-        { to: "/alunos", label: "Alunos" },
-        { to: "/enade", label: "Enade" },
+        {to: "/usuarios", label: "Usuários"},
+        {to: "/mapas", label: "Mapas"},
+        {to: "/questionarios", label: "Questionários"},
+        {to: "/professores", label: "Professores"},
+        {to: "/alunos", label: "Alunos"},
+        {to: "/enade", label: "Enade"},
     ];
     const rotasPublicas = [
-        { to: "/login", label: "Login" },
-        { to: "/register", label: "Cadastre-se" },
-        { to: "/missing", label: "Tá perdido" },
-        { to: "/linkpage", label:"Links" },
-        { to: "/unauthorized", label: "Não autorizado" }
+        {to: "/login", label: "Login"},
+        {to: "/register", label: "Cadastre-se"},
+        {to: "/missing", label: "Tá perdido"},
+        {to: "/linkpage", label: "Links"},
+        {to: "/unauthorized", label: "Não autorizado"}
     ];
 
     let rotas = [];
