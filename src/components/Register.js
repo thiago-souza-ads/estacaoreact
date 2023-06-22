@@ -112,16 +112,16 @@ const Register = () => {
                         </p>
                     </section>
                 ) : (
-                    <section>
+                    <section style={{width: "80vh", margin: "0 auto"}}>
                         <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-                        <h1>Registrar-se</h1>
+                        <h1 style={{ textAlign: "center"}}>Registrar-se</h1>
                         <form onSubmit={handleSubmit}>
                             <label htmlFor="name">
                                 Nome:
                                 <FontAwesomeIcon icon={faCheck} className={validName ? "valid" : "hide"} />
                                 <FontAwesomeIcon icon={faTimes} className={validName || !name ? "hide" : "invalid"} />
                             </label>
-                            <input
+                            <input style={{width: "100%", height: "40px", borderRadius: "5px", border: "1px solid #ccc", padding: "0 10px", fontSize: "1.2rem", backgroundColor: nameFocus && name && !validName ? "#ffeeba" : "#fff", outline: "none", transition: "background-color .2s ease-in-out"}}
                                 type="text"
                                 id="name"
                                 ref={nameRef}
@@ -144,7 +144,7 @@ const Register = () => {
                                 <FontAwesomeIcon icon={faCheck} className={validEmail ? "valid" : "hide"} />
                                 <FontAwesomeIcon icon={faTimes} className={validEmail || !email ? "hide" : "invalid"} />
                             </label>
-                            <input
+                            <input style={{width: "100%", height: "40px", borderRadius: "5px", border: "1px solid #ccc", padding: "0 10px", fontSize: "1.2rem", backgroundColor: nameFocus && name && !validName ? "#ffeeba" : "#fff", outline: "none", transition: "background-color .2s ease-in-out"}}
                                 type="email"
                                 id="email"
                                 ref={emailRef}
@@ -167,7 +167,7 @@ const Register = () => {
                                 <FontAwesomeIcon icon={faCheck} className={validPwd ? "valid" : "hide"} />
                                 <FontAwesomeIcon icon={faTimes} className={validPwd || !pwd ? "hide" : "invalid"} />
                             </label>
-                            <input
+                            <input style={{width: "100%", height: "40px", borderRadius: "5px", border: "1px solid #ccc", padding: "0 10px", fontSize: "1.2rem", backgroundColor: nameFocus && name && !validName ? "#ffeeba" : "#fff", outline: "none", transition: "background-color .2s ease-in-out"}}
                                 type="password"
                                 id="password"
                                 ref={pwdRef}
@@ -191,7 +191,7 @@ const Register = () => {
                                 <FontAwesomeIcon icon={faCheck} className={validConfirmPwd && confirmPwd ? "valid" : "hide"} />
                                 <FontAwesomeIcon icon={faTimes} className={validConfirmPwd || !confirmPwd ? "hide" : "invalid"} />
                             </label>
-                            <input
+                            <input style={{width: "100%", height: "40px", borderRadius: "5px", border: "1px solid #ccc", padding: "0 10px", fontSize: "1.2rem", backgroundColor: nameFocus && name && !validName ? "#ffeeba" : "#fff", outline: "none", transition: "background-color .2s ease-in-out"}}
                                 type="password"
                                 id="confirm_pwd"
                                 ref={confirmPwdRef}

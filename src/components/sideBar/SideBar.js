@@ -1,13 +1,13 @@
-import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, {useContext, useState} from 'react';
+import {Link, useNavigate} from 'react-router-dom';
 import styles from './SideBar.module.css';
 import AuthContext from '../../context/AuthProvider';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPowerOff, faBars, faHome } from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faBars, faHome, faPowerOff, faUserEdit} from '@fortawesome/free-solid-svg-icons';
 import Avatar from 'avataaars';
 
-const SideBar = ({ user }) => {
-    const { setAuth } = useContext(AuthContext);
+const SideBar = ({user}) => {
+    const {setAuth} = useContext(AuthContext);
     const navigate = useNavigate();
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const avatarUser = user.avatar;
@@ -24,7 +24,7 @@ const SideBar = ({ user }) => {
     return (
         <div className={`${styles['user-sidebar']} ${sidebarOpen ? styles.open : styles.closed}`}>
             {sidebarOpen && (
-                <div className={styles['avatar-container']} onClick={() =>  navigate('/editar-avatar')}>
+                <div className={styles['avatar-container']} onClick={() => navigate('/editar-avatar')}>
                     <Avatar
                         className="avataaar"
                         avatarStyle="Circle"
@@ -42,25 +42,33 @@ const SideBar = ({ user }) => {
                         mouthType={avatarUser.mouthType}
                         skinColor={avatarUser.skinColor}
                     />
+                    <div className={styles['edit-icon']}
+                         style={{marginTop: '10px', marginLeft: '10px', cursor: 'pointer'}}>
+                        <FontAwesomeIcon icon={faUserEdit} size="sm"/>
+                    </div>
                 </div>
             )}
-            <h2 className={sidebarOpen ? styles.closed : styles.hidden}>{user.nome}</h2>
-            <h3 className={sidebarOpen ? styles.closed : styles.hidden}>{user.roles[0].nome}</h3>
-            <Link to="/editar-perfil" className={sidebarOpen ? styles.closed : styles.hidden}>
+            <h2 className={sidebarOpen ? styles.closed : styles.hidden}
+                style={{textAlign: 'center', textDecoration: 'none'}}>{user.nome}</h2>
+            <h3 className={sidebarOpen ? styles.closed : styles.hidden}
+                style={{textAlign: 'center', textDecoration: 'none'}}>{user.roles[0].nome}</h3>
+            <Link to="/editar-perfil" className={sidebarOpen ? styles.closed : styles.hidden}
+                  style={{textAlign: 'center', textDecoration: 'none'}}>
                 Editar Perfil
             </Link>
             {sidebarOpen && (
                 <div className={`flexGrow ${styles.closed}`}>
-                    <button className={styles['home-button']} onClick={() => navigate('/')}> {/* Adicione o botão Home */}
-                        <FontAwesomeIcon icon={faHome} size="sm" /> Home
+                    <button className={styles['home-button']}
+                            onClick={() => navigate('/')}> {/* Adicione o botão Home */}
+                        <FontAwesomeIcon icon={faHome} size="sm"/> Home
                     </button>
                     <button className={styles['logout-button']} onClick={logout}>
-                        <FontAwesomeIcon icon={faPowerOff} size="sm" /> Sair
+                        <FontAwesomeIcon icon={faPowerOff} size="sm"/> Sair
                     </button>
                 </div>
             )}
             <div className={styles['toggle-button']} onClick={toggleSidebar}>
-                <FontAwesomeIcon icon={faBars} size="lg" />
+                <FontAwesomeIcon icon={faBars} size="lg"/>
             </div>
         </div>
     );
