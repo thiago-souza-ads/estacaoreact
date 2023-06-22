@@ -6,9 +6,10 @@ import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 
 const NAME_REGEX = /^[A-zÀ-ÿ\s]+$/;
-const EMAIL_REGEX = /^[A-z0-9._%+-]+@[A-z0-9.-]+\.[A-z]{2,}$/;
+const EMAIL_REGEX = /^[A-z0-9._%+-]+@alunos\.estacio\.br$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const API_URL = "https://enadejava-1685497331322.azurewebsites.net";
+const API_URL = "http://localhost:8080";
+// const API_URL = "https://enadejava-1685497331322.azurewebsites.net";
 const REGISTER_URL = '/api/v1/auth/register';
 
 const Register = () => {
@@ -82,7 +83,7 @@ const Register = () => {
                     withCredentials: true
                 }
             );
-            toast.success("Salvo com sucesso!");
+            toast.success("Usuário cadastrado com sucesso!");
             setSuccess(true);
             setName('');
             setEmail('');
@@ -90,13 +91,12 @@ const Register = () => {
             setConfirmPwd('');
         } catch (err) {
             if (!err?.response) {
-                setErrMsg('Sem resposta do servidor! Tente mais tarde!');
-            } else if (err.response?.status === 409) {
-                setErrMsg('Nome de usuário em uso, insira outro!');
+                toast.error('Email já cadastrado, insira outro ou solicite ao seu coordenador!');
+            }  else if (err.response?.status === 409) {
+                toast.error('Email já cadastrado, insira outro ou solicite ao seu coordenador!');
             } else {
-                setErrMsg('Erro ao cadastrar usuário');
+                toast.error('Erro ao cadastrar usuário');
             }
-            toast.error(err);
             errRef.current.focus();
         }
     };
@@ -219,7 +219,6 @@ const Register = () => {
                     </section>
                 )}
             </div>
-
             <ToastContainer />
         </>
     );
