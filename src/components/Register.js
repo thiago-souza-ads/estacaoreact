@@ -6,10 +6,10 @@ import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 
 const NAME_REGEX = /^[A-zÀ-ÿ\s]+$/;
-const EMAIL_REGEX = /^[A-z0-9._%+-]+@alunos\.estacio\.br$/;
+const EMAIL_REGEX = /^\d{11}@alunos\.estacio\.br$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const API_URL = "http://localhost:8080";
-// const API_URL = "https://enadejava-1685497331322.azurewebsites.net";
+// const API_URL = "http://localhost:8080";
+const API_URL = "https://enadejava-1685497331322.azurewebsites.net";
 const REGISTER_URL = '/api/v1/auth/register';
 
 const Register = () => {
@@ -159,7 +159,7 @@ const Register = () => {
                             />
                             <p id="emailnote" className={emailFocus && email && !validEmail ? "instructions" : "offscreen"}>
                                 <FontAwesomeIcon icon={faInfoCircle} />
-                                O email deve ser válido e seguir o padrão ***@alunos.estacio.br.
+                                O email deve ser válido e seguir o padrão [ matricula@alunos.estacio.br ]
                             </p>
 
                             <label htmlFor="password">
