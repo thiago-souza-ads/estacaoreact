@@ -1,9 +1,13 @@
 .navbar {
-    width: 80%;
+    background-image: url('../../assets/bgestacio.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    width: 100%;
     display: flex;
     justify-content: space-around;
-    margin: 15px;
-    padding: 10px;
+    margin: 0px;
+    padding: 0px;
 }
 
 .navbarNav {
