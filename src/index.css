@@ -9,7 +9,7 @@
 html {
     font-family: 'Nunito', sans-serif;
     font-size: 22px;
-    color: #fff;
+    /*color: #fff;*/
 }
 
 body {
@@ -24,14 +24,11 @@ body {
 }
 
 section {
-    /*width: 100%;*/
-    /*!*max-width: 420px;*!*/
-    /*!*min-height: 400px;*!*/
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    /*justify-content: flex-start;*/
-    /*padding: 1rem;*/
-    /*background-color: rgba(0,0,0,0.4);*/
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1rem;
+    background-color: rgba(0,0,0,0.4);
 }
 
 form {
@@ -43,10 +40,11 @@ form {
 }
 
 a, a:visited {
-    color: #fff;
-}
+     color: #ffffff;
+ }
 
 input[type="text"],
+input[type="email"],
 input[type="password"],
 button,
 textarea {
