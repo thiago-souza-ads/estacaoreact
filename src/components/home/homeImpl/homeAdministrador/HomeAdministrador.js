@@ -1,68 +1,52 @@
-import {Col, Container, ListGroup, Nav, Navbar, Row} from "react-bootstrap";
-import styles from "./HomeAdministrador.module.css";
+import React from 'react';
+import { Col, Container, Card, ListGroup, Row } from 'react-bootstrap';
+import styles from './HomeAdministrador.module.css';
 
 const items = [
-    { title: 'Alunos', link: '/alunos' },
-    { title: 'Cursos', link: '/cursos' },
-    { title: 'Dashboard', link: '/dashboard' },
-    { title: 'Mapas', link: '/mapas' },
-    { title: 'Unidades', link: '/unidades' },
-    { title: 'Usuários', link: '/usuarios' },
+    { title: 'Alunos', link: '/alunos', description: 'Lista de alunos cadastrados' },
+    { title: 'Cursos', link: '/cursos', description: 'Lista de cursos cadastrados' },
+    { title: 'Dashboard', link: '/dashboard', description: 'Dashboard do sistema' },
+    { title: 'Mapas', link: '/mapas', description: 'Lista de mapas cadastrados'},
+    { title: 'Unidades', link: '/unidades', description: 'Lista de unidades cadastradas'},
+    { title: 'Usuários', link: '/usuarios', description: 'Lista de usuários cadastrados'},
 ];
 
-function Card({ title, link }) {
+function CardItem({ title, link, description }) {
     return (
-        <a href={link} className="card">
-            <div className="card-content">
-                <h2>{title}</h2>
-            </div>
-        </a>
+        <Card className="custom-card" style={{borderRadius: '10px', width: '20rem', margin: '10px', boxShadow: '0px 0px 10px #000000'}}>
+            <Card.Body>
+                <Card.Title style={{color:  '#ffffff', backgroundColor: 'rgb(31 139 237)' , fontSize: '20px', textAlign: 'center', fontWeight: 'bold', padding: '10px', borderRadius: '10px', boxShadow: '0px 0px 10px #000000'}}><strong>{title}</strong></Card.Title>
+                <Card.Text>
+                    {description}
+                </Card.Text>
+                <ListGroup className="list-group-flush">
+                    <ListGroup.Item>Cras justo odio</ListGroup.Item>
+                    <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
+                    <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+                </ListGroup>
+                <Card.Link href={link}>{title}</Card.Link>
+            </Card.Body>
+        </Card>
     );
 }
 
 export const HomeAdministrador = () => {
     return (
         <>
-            <Container className={styles.container}>
-                <Row style={{display: 'flex', justifyContent: 'center'}}>
-                    {items.map((item, index) => (
-                        <Col md={6} style={{height: '50vh', width: '50vh', margin: '10px'}} className={styles.column6} key={index}>
-                            <Card style={{ width: '18rem', height: '18rem', backgroundColor: '#000000', margin: '10px'}} title={item.title}  key={index} link={item.link}>
-                                <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
-                                <Card.Body>
-                                    <Card.Title>Teste</Card.Title>
-                                    <Card.Text>
-                                        Some quick example text to build on the card title and make up the
-                                        bulk of the card's content.
-                                    </Card.Text>
-                                </Card.Body>
-                                <ListGroup className="list-group-flush">
-                                    <ListGroup.Item>Cras justo odio</ListGroup.Item>
-                                    <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-                                    <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-                                </ListGroup>
-                                <Card.Body>
-                                    <Card.Link href="#">Card Link</Card.Link>
-                                    <Card.Link href="#">Another Link</Card.Link>
-                                </Card.Body>
-                            </Card>
+            <div className="card-container" style={{width: '64%', alignItems: 'center', justifyContent: 'center', display: 'flex', flexWrap: 'wrap', padding: '20px 20px 20px 0px'}}>
+                {items.map((item, index) => (
+                    <CardItem key={index} title={item.title} link={item.link} description={item.description}/>
+                ))}
+            </div>
+            <footer className={`footer mt-auto py-3 bg-light ${styles.footer}`}>
+                <Container fluid>
+                    <Row>
+                        <Col md={12}>
+                            <span className="text-muted">Aplicação criada pelo LTD-Estácio 2023.</span>
                         </Col>
-                    ))}
-                </Row>
-                <Row style={{display: 'flex', justifyContent: 'center'}}>
-
-                </Row>
-
-                <footer className={`footer mt-auto py-3 bg-light ${styles.footer}`}>
-                    <Container fluid>
-                        <Row>
-                            <Col md={12}>
-                                <span className="text-muted">Aplicação criada pelo LTD-Estácio 2023.</span>
-                            </Col>
-                        </Row>
-                    </Container>
-                </footer>
-            </Container>
+                    </Row>
+                </Container>
+            </footer>
         </>
     );
 };
