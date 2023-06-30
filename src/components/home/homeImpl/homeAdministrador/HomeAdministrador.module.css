@@ -1,18 +1,10 @@
-.container {
-    background-color: rgba(130, 176, 231, 0.08);
-}
-
-.column12 {
-    display: flex;
-    justify-content: space-around;
-}
-
 .footer {
     position: fixed;
-    left: 0;
+    left: 33%;
     bottom: 0;
-    width: 100%;
-    background-color: #65c9ff;
+    width: 33%;
+    background-color:  #65c9ff;
     color: white;
     text-align: center;
+    border-radius: 15px 50px
 }
