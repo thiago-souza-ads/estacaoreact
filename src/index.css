@@ -14,6 +14,7 @@ html {
 
 body {
     min-height: 100vh;
+    background-image: url('./assets/bgestacio.jpg');
 }
 
 .App {
@@ -40,7 +41,7 @@ form {
 }
 
 a, a:visited {
-     color: #ffffff;
+     /*color: #ffffff;*/
  }
 
 input[type="text"],

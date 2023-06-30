@@ -112,7 +112,7 @@ const Register = () => {
                         </p>
                     </section>
                 ) : (
-                    <section style={{width: "80vh", margin: "0 auto"}}>
+                    <section style={{width: "80vh", margin: "0 auto", borderRadius: "5px", padding: "30px", backgroundColor: "#fff"}}>
                         <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                         <h1 style={{ textAlign: "center"}}>Registrar-se</h1>
                         <form onSubmit={handleSubmit}>
@@ -211,8 +211,7 @@ const Register = () => {
                             <button disabled={!validName || !validEmail || !validPwd || !validConfirmPwd}>Cadastrar</button>
                         </form>
                         <p>
-                            Já tem cadastro?<br />
-                            <span className="line">
+                            Já tem cadastro? <span className="line">
                 <Link to="/">Login</Link>
               </span>
                         </p>
