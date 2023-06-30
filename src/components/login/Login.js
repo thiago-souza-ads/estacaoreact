@@ -59,6 +59,7 @@ const Login = () => {
                 let token = response?.data?.access_token;
                 let roleId = ROLES[rolesName];
                 const accessToken = token;
+                localStorage.setItem('token', token);
                 setAuth({ user: login, password, roles: roleId, accessToken, usuario: user });
                 setLogin('');
                 setPassword('');
