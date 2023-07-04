@@ -5,6 +5,7 @@ import Logo from '../../assets/estacioWhiteBg.png';
 import axios from '../../api/axios';
 import styles from './Login.module.css';
 import {toast, ToastContainer} from "react-toastify";
+import FluidAnimation from 'react-fluid-animation';
 
 const LOGIN_URL = 'auth/authenticate';
 
@@ -81,36 +82,33 @@ const Login = () => {
 
     return (
         <div className={styles.main}>
-            <div className={styles.loginContainer}>
-                <div className={styles.loginInput}>
-                    <form onSubmit={handleSubmit}>
-                        <img src={Logo} alt="logo" width="150px" />
-                        <div className={styles.inputsBox}>
-                            <input
-                                type="text"
-                                id="loginName"
-                                ref={userRef}
-                                autoComplete="off"
-                                onChange={(e) => setLogin(e.target.value)}
-                                value={login}
-                                placeholder="E-mail"
-                                required
-                            />
-                            <input
-                                type="password"
-                                id="password"
-                                onChange={(e) => setPassword(e.target.value)}
-                                value={password}
-                                placeholder="Senha"
-                                required
-                            />
-                        </div>
-                        <button>Logar</button>
-                        <div className={styles.error}>{errMsg}</div>
-                        <p> Não possui conta ainda? <a href="/register" style={{color: "#fff", textDecoration: "underline"}}>Cadastre-se</a></p>
-                    </form>
+            <FluidAnimation style={{ height: '100vh' }} />
+            <form onSubmit={handleSubmit} style={{position: "absolute", top: "50%", transform: "translateY(-50%)"}}>
+                <img style={{alignSelf: "center", marginTop: "20px", marginBottom: "20px"}} src={Logo} alt="logo" width="150px" />
+                <div className={styles.inputsBox}>
+                    <input
+                        type="text"
+                        id="loginName"
+                        ref={userRef}
+                        autoComplete="off"
+                        onChange={(e) => setLogin(e.target.value)}
+                        value={login}
+                        placeholder="E-mail"
+                        required
+                    />
+                    <input
+                        type="password"
+                        id="password"
+                        onChange={(e) => setPassword(e.target.value)}
+                        value={password}
+                        placeholder="Senha"
+                        required
+                    />
                 </div>
-            </div>
+                <button>Logar</button>
+                <div className={styles.error}>{errMsg}</div>
+                <p style={{color: "#ffffff", fontSize: "12px", textAlign: "center"}}> Não possui conta ainda? <a href="/register" style={{color: "#fff", textDecoration: "underline"}}>Cadastre-se</a></p>
+            </form>
             <ToastContainer/>
         </div>
     );
