@@ -6,7 +6,7 @@ import axios from '../../api/axios';
 import styles from './Login.module.css';
 import {toast, ToastContainer} from 'react-toastify';
 import FluidAnimation from 'react-fluid-animation';
-import Typewriter from 'react-typewriter-effect';
+import TypeWriterEffect from 'react-typewriter-effect';
 
 const LOGIN_URL = 'auth/authenticate';
 
@@ -33,7 +33,13 @@ const Login = () => {
     useEffect(() => {
         userRef.current.focus();
     }, []);
+    const typeWriterRef = useRef(null);
 
+    useEffect(() => {
+        setTimeout(() => {
+            typeWriterRef.current.typeDeleteAllText();
+        }, 2000);
+    }, []);
     useEffect(() => {
         setErrMsg('');
     }, [login, password]);
@@ -109,21 +115,23 @@ const Login = () => {
                 <button type="submit">Logar</button>
                 <div className={styles.error}>{errMsg}</div>
                 <p style={{color: '#ffffff', fontSize: '12px', textAlign: 'center'}}>
-                    Não possui conta ainda? <a href="/register"
-                                               style={{color: '#fff', textDecoration: 'underline'}}>Cadastre-se</a>
+                    Não possui conta ainda? <a href="/register" style={{color: 'rgba(123,129,218,0.89)', textDecoration: 'underline'}}>Cadastre-se</a>
                 </p>
             </form>
-            <div style={{position: 'absolute', bottom: '0', marginTop: '20px', color: '#fff', textAlign: 'center'}}>
-                <Typewriter
-                    options={{
-                        strings: texto,
-                        autoStart: true,
-                        loop: true,
-                        deleteSpeed: 20,
-                        color: '#fff',
-                    }}
+            <div style={{position: 'absolute', bottom: '40px', marginTop: '20px', color: '#fff', textAlign: 'center'}}>
+                <TypeWriterEffect
+                    ref={typeWriterRef}
+                    textStyle={{ fontFamily: 'Arial', fontSize: '24px' }}
+                    startDelay={20}
+                    cursorColor="white"
+                    text="Seja bem-vindo! Nosso objetivo é lhe ajudar a ir mais longe!"
+                    typeSpeed={100}
+                    scrollArea={window}
+                    eraseDelay={2000} // Define o tempo de espera antes de apagar o texto (2 segundos)
+                    eraseSpeed={100} // Define a velocidade de apagar o texto
+                    eraseStyle={{ color: 'transparent' }} // Define o estilo do texto apagado (transparente)
+                    loop={true}
                 />
-                <h1>Ola</h1>
             </div>
             <ToastContainer/>
         </div>
